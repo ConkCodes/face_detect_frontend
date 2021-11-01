@@ -1,0 +1,29 @@
+.flex {
+    display: flex;
+}
+
+.jc-end {
+    justify-content: flex-end;
+}
+
+.pr-16 {
+    padding-right: 1rem;
+}
+
+.pointer:hover, .pointer:focus {
+    cursor: pointer;
+}
+
+.underline:hover, .underline:focus {
+    text-decoration: underline;
+    transition: opacity .15s ease-in;
+}
+
+.dim:hover, .dim:focus {
+  opacity: .5;
+  transition: opacity .15s ease-in;
+}
+
+.b-black {
+    border: 3px solid black;
+}
