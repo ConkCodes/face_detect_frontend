@@ -6,8 +6,8 @@
     justify-content: flex-end;
 }
 
-.pr-16 {
-    padding-right: 1rem;
+.pr-32 {
+    padding-right: 2rem;
 }
 
 .pointer:hover, .pointer:focus {

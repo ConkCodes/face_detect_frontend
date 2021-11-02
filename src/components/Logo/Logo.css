@@ -1,9 +1,33 @@
+.flex {
+    display: flex;
+}
+
+.jc-center {
+    justify-content: center;
+}
+
+.ai-center {
+    align-items: center;
+}
+
+.h-80p {
+    height: 80%;
+}
+
+.w-80p {
+    width: 80%;
+}
+
 .h-160 {
     height: 10rem;
 }
 
 .w-160 {
     width: 10rem;
+}
+
+.m-32 {
+    margin: 2rem;
 }
 
 .b-gradient {
