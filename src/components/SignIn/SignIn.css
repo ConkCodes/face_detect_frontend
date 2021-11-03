@@ -1,0 +1,95 @@
+.card {
+    background: linear-gradient(89deg, #FF5EDF 0%, #04C8DE 100%);
+    border: 1px solid black;
+    box-shadow: 0px 0px 8px 2px rgba( 0, 0, 0, 0.2);
+}
+
+.m-auto {
+    margin: auto;
+}
+
+.bs-border {
+    box-sizing: border-box;
+}
+
+.bs-inherit {
+    box-sizing: inherit;
+}
+
+.w-400 {
+    width: 25rem;
+}
+
+.plr-80 {
+    padding-left: 5rem;
+    padding-right: 5rem;
+}
+
+.ptb-48 {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+}
+
+.mt-32 {
+    margin-top: 2rem;
+}
+
+.mt-16 {
+    margin-top: 1rem;
+}
+
+.mb-0 {
+    margin-bottom: 0;
+}
+
+.mt-0 {
+    margin-top: 0;
+}
+
+.w-max {
+    width: 100%;
+}
+
+.fs-150 {
+    font-size: 1.5rem;
+}
+
+.b {
+    font-weight: bold;
+}
+
+.input {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    border-width: 1px;
+    border-style: solid;
+    border-color: black;
+    background-color: white;
+}
+
+.input:hover, 
+.input:focus {
+    background-color: black;
+    border-color: white;
+    color: white;
+}
+
+.button {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    font-weight: bold;
+    border-width: 1px;
+    border-style: solid;
+    border-color: black;
+    background-color: #CBC3E3;
+    transition: all .2s ease-in-out;
+}
+
+button:hover {
+    transform: scale(1.05); 
+    cursor: pointer;
+}

@@ -6,7 +6,7 @@ const Navigation = () => {
 
     return(
         <div className="flex">
-            <Tilt className="flex jc-center ai-center h-160 w-160 mtrb-16 ml-32 card">
+            <Tilt className="flex jc-center ai-center h-80 w-80 mtrb-16 ml-32 card">
                 <img className="h-80p w-80p" alt="brain" src={brain}/>
             </Tilt>
             <nav className="ml-auto">
