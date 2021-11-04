@@ -18,21 +18,18 @@
     padding-right: 2rem;
 }
 
-.pointer:hover {
-    cursor: pointer;
+.link {
+    text-decoration: underline;
 }
 
-.dim:hover {
-  opacity: .5;
-  transition: opacity .15s ease-in;
+.link:hover {
+    cursor: pointer;
+    opacity: .5;
+    transition: opacity .15s ease-in;
 }
 
 .ml-auto {
     margin-left: auto;
-}
-
-.underline {
-    text-decoration: underline;
 }
 
 .h-80p {

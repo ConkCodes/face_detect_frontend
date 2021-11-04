@@ -1,12 +1,21 @@
 import "./FaceRecognition.css";
 
-const FaceRecognition = () => {
+const FaceRecognition = (props) => {
 
-    return(
-        <div className="flex jc-center">
-            <img className="w-512 h-auto b-black shadow" alt="pic" src="https://www.outsideonline.com/wp-content/uploads/2016/10/07/chris-sharma-training_h.jpg"/>
-        </div>
-    );
+    if (props.imageUrl === "") {
+        return(
+            <div></div>
+        ); 
+    } else {
+        return(
+            <div className="flex jc-center">
+                <div className="abs">
+                    <img id="inputImage" className="w-512 h-auto b-black shadow" alt="" src={props.imageUrl}/>
+                    <div className="bounding-box" style={{top: props.box.top, right: props.box.right, bottom: props.box.bottom, left: props.box.bottom}}></div>
+                </div>
+            </div>
+        );
+    }
 
 }
 

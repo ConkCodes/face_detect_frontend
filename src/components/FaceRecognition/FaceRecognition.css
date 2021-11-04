@@ -22,6 +22,19 @@
     border: 1px solid black;
 }
 
+.bounding-box {
+    position: absolute;
+    box-shadow: 0 0 0 3px #149df2 inset;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    cursor: pointer;
+}
+
 .shadow {
     box-shadow: 0px 0px 8px 2px rgba( 0, 0, 0, 0.2);
+}
+
+.abs {
+    position: absolute;
 }

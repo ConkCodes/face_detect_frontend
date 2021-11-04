@@ -10,7 +10,7 @@ const SignIn = (props) => {
             <p className="mb-0">Password</p>
             <input type="password" className="input w-max bs-border"/>
             <button onClick={() => props.onRouteChange("home")} className="button mt-16">Sign In</button>
-            <p className="mb-0">Don't have an account? <span>Sign up</span></p>
+            <p className="mb-0">Don't have an account? <span onClick={() => props.onRouteChange("signUp")}className="link">Sign up</span></p>
         </div>
     );
 
