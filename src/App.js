@@ -10,7 +10,7 @@ import ImageLinkForm from "./components/ImageLinkForm/ImageLinkForm.js"
 import FaceRecognition from "./components/FaceRecognition/FaceRecognition.js";
 
 const app = new Clarifai.App({
-	apiKey: "c90f97e9f7684d219fa18723f497149a"
+	apiKey: "Your API Key Here"
 });
 
 const particlesOptions = {
