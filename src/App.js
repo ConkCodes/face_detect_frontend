@@ -74,6 +74,12 @@ class App extends React.Component {
 
 	onRouteChange = (route) => {
 		this.setState({route: route});
+		if (this.state.input !== "") {
+			this.setState({input: ""});
+		}
+		if (this.state.imageUrl !== "") {
+			this.setState({imageUrl: ""});
+		}
 	}
 
 	render() {
