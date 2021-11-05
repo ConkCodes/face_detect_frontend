@@ -9,10 +9,12 @@ import Rank from "./components/Rank/Rank.js";
 import ImageLinkForm from "./components/ImageLinkForm/ImageLinkForm.js"
 import FaceRecognition from "./components/FaceRecognition/FaceRecognition.js";
 
+// create clarifai object using api key
 const app = new Clarifai.App({
 	apiKey: "c90f97e9f7684d219fa18723f497149a"
 });
 
+// customize particles.js
 const particlesOptions = {
 	particles: {
 		number: {
@@ -37,6 +39,7 @@ class App extends React.Component {
 		}
 	}
 
+	// use clarifai response to create bounding box
 	generateFaceBox = (data) => {
 		const boundingBox = data.outputs[0].data.regions[0].region_info.bounding_box;
 		const image = document.getElementById("inputImage");
@@ -52,37 +55,41 @@ class App extends React.Component {
 		});
 	}
 
-	displayFaceBox = (box) => {
-		this.setState({box: box});
-	}
-
+	// listens to for imageUrl
 	onInputChange = (event) => {
 		this.setState({input: event.target.value});
 	}
 
+	// listens to user submitting imageUrl
 	onButtonSubmit = () => {
 		app.models.predict(Clarifai.FACE_DETECT_MODEL, this.state.input)
 		.then(data => {
+			// if valid url set imageUrl to input
 			this.setState({imageUrl: this.state.input});
 			this.generateFaceBox(data);
 		})
 		.catch(error => {
+			// if invalid do not set / erase previous imageUrl
 			this.setState({imageUrl: ""});
 			console.log(error);
 		});
 	}
 
+	// listens for user page changes
 	onRouteChange = (route) => {
 		this.setState({route: route});
+		// if page is changed reset input state
 		if (this.state.input !== "") {
 			this.setState({input: ""});
 		}
+		// if page is changed reset input state
 		if (this.state.imageUrl !== "") {
 			this.setState({imageUrl: ""});
 		}
 	}
 
 	render() {
+		// display sign in page
 		if (this.state.route === "signIn") {
 			return(
 				<div>
@@ -91,6 +98,7 @@ class App extends React.Component {
 					<SignIn onRouteChange={this.onRouteChange}/>
 				</div>
 			);
+		// display sign up page
 		} else if (this.state.route === "signUp") {
 			return(
 				<div>
@@ -99,6 +107,7 @@ class App extends React.Component {
 					<SignUp onRouteChange={this.onRouteChange}/>
 				</div>
 			);	
+		// display home page
 		} else {
 			return (
 				<div>
