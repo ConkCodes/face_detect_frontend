@@ -11,7 +11,7 @@ import FaceRecognition from "./components/FaceRecognition/FaceRecognition.js";
 
 // create clarifai object using api key
 const app = new Clarifai.App({
-	apiKey: "c90f97e9f7684d219fa18723f497149a"
+	apiKey: "Your API Key Here"
 });
 
 // customize particles.js
@@ -53,7 +53,8 @@ class App extends React.Component {
 	/*
 	description: listens to the onClick event in ImageLinkForm.js
 		and on click sends the image url to the clarifai api.
-		if valid image url, imageUrl state is updated and the image is displayed.
+		if valid image url, imageUrl state is updated causing the image to be displayed
+		and then when the image loads, the onLoad event handler calculates the face box.
 		otherwise, the imageUrl is reset and no image is displayed.
 	input: n/a
 	output: n/a
