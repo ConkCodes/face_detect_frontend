@@ -11,7 +11,7 @@ import FaceRecognition from "./components/FaceRecognition/FaceRecognition.js";
 
 // create clarifai object using api key
 const app = new Clarifai.App({
-	apiKey: "Your API Key Here"
+	apiKey: "c90f97e9f7684d219fa18723f497149a"
 });
 
 // customize particles.js
@@ -34,17 +34,63 @@ class App extends React.Component {
 		this.state = {
 			input: "",
 			imageUrl: "",
+			clarifaiData: {},
 			box: {},
 			route: "signIn"
 		}
 	}
 
-	// use clarifai response to create bounding box
-	generateFaceBox = (data) => {
-		const boundingBox = data.outputs[0].data.regions[0].region_info.bounding_box;
+	/*
+	description: listens to the onChange event in ImageLinkForm.js
+		and sets the input value to input state.
+	input: onClick event
+	output: n/a
+	*/
+	onInputChange = (event) => {
+		this.setState({input: event.target.value});
+	}
+
+	/*
+	description: listens to the onClick event in ImageLinkForm.js
+		and on click sends the image url to the clarifai api.
+		if valid image url, imageUrl state is updated and the image is displayed.
+		otherwise, the imageUrl is reset and no image is displayed.
+	input: n/a
+	output: n/a
+	*/
+	onButtonSubmit = () => {
+		app.models.predict(Clarifai.FACE_DETECT_MODEL, this.state.input)
+		.then(data => {
+			// if valid url set imageUrl to input and response to clarifaiData
+			this.setState({
+				imageUrl: this.state.input,
+				clarifaiData: data
+			});
+		})
+		.catch(error => {
+			// if invalid erase previous imageUrl and clarifaiData which removes previous image from display
+			// only need to check if imageUrl is empty since imageUrl and clarifaiData are set in sync
+			if (this.state.imageUrl !== "") {
+				this.setState({
+					imageUrl: "",
+					clarifaiData: {}
+				});
+			}
+			console.log(error);
+		});
+	}
+
+	/*
+	description: uses the clarifai api response to calculate the 
+		bounding box around faces and sets it to the box state.
+	input: clarifai api response
+	output: n/a
+	*/
+	onImageLoad = () => {
+		const boundingBox = this.state.clarifaiData.outputs[0].data.regions[0].region_info.bounding_box;
 		const image = document.getElementById("inputImage");
-		const width = image.width;
-		const height = image.height;
+		const width = Number(image.width);
+		const height = Number(image.height);
 		this.setState({
 			box: {
 				left: boundingBox.left_col * width,
@@ -55,34 +101,22 @@ class App extends React.Component {
 		});
 	}
 
-	// listens to for imageUrl
-	onInputChange = (event) => {
-		this.setState({input: event.target.value});
-	}
-
-	// listens to user submitting imageUrl
-	onButtonSubmit = () => {
-		app.models.predict(Clarifai.FACE_DETECT_MODEL, this.state.input)
-		.then(data => {
-			// if valid url set imageUrl to input
-			this.setState({imageUrl: this.state.input});
-			this.generateFaceBox(data);
-		})
-		.catch(error => {
-			// if invalid do not set / erase previous imageUrl
-			this.setState({imageUrl: ""});
-			console.log(error);
-		});
-	}
-
-	// listens for user page changes
+	/*
+	description: listens fror onClick events for when the user is
+		trying to change pages and receives the destination route name.
+		the input and imageUrl state must be reset when the page is switched
+		otherwise if the user signs out and signs back in, the previous
+		image will still be displayed
+	input: the route name the user is trying to reach
+	output: n/a
+	*/
 	onRouteChange = (route) => {
 		this.setState({route: route});
 		// if page is changed reset input state
 		if (this.state.input !== "") {
 			this.setState({input: ""});
 		}
-		// if page is changed reset input state
+		// if page is changed reset imageUrl state
 		if (this.state.imageUrl !== "") {
 			this.setState({imageUrl: ""});
 		}
@@ -115,7 +149,7 @@ class App extends React.Component {
 					<Navigation route={this.state.route} onRouteChange={this.onRouteChange}/>
 					<Rank/>
 					<ImageLinkForm onInputChange={this.onInputChange} onButtonSubmit={this.onButtonSubmit}/>
-					<FaceRecognition imageUrl={this.state.imageUrl} box={this.state.box}/>
+					<FaceRecognition imageUrl={this.state.imageUrl} onImageLoad={this.onImageLoad} box={this.state.box}/>
 				</div>
 			);
 		}

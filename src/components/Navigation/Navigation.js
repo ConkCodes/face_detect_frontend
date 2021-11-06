@@ -4,8 +4,8 @@ import brain from "./brain.png";
 
 const Navigation = (props) => {
 
+    // display sign in route navigation
     if (props.route === "signIn") {
-
         return(
             <div className="flex">
                 <Tilt className="flex jc-center ai-center h-80 w-80 mtrb-16 ml-32 card">
@@ -16,9 +16,8 @@ const Navigation = (props) => {
                 </nav>
             </div>
         );
-
+    // display sign up route navigation
     } else if (props.route === "signUp") {
-
         return(
             <div className="flex">
                 <Tilt className="flex jc-center ai-center h-80 w-80 mtrb-16 ml-32 card">
@@ -29,9 +28,8 @@ const Navigation = (props) => {
                 </nav>
             </div>
         );
-        
+    // display home route navigation
     } else {
-
         return(
             <div className="flex">
                 <Tilt className="flex jc-center ai-center h-80 w-80 mtrb-16 ml-32 card">
