@@ -41,8 +41,7 @@ class App extends React.Component {
 	}
 
 	/*
-	description: listens to the onChange event in ImageLinkForm.js
-		and sets the input value to input state.
+	description: listens to the onChange event in ImageLinkForm.js and sets the input value to input state.
 	input: onClick event
 	output: n/a
 	*/
@@ -51,11 +50,8 @@ class App extends React.Component {
 	}
 
 	/*
-	description: listens to the onClick event in ImageLinkForm.js
-		and on click sends the image url to the clarifai api.
-		if valid image url, imageUrl state is updated causing the image to be displayed
-		and then when the image loads, the onLoad event handler calculates the face box.
-		otherwise, the imageUrl is reset and no image is displayed.
+	description: listens to the onClick event in ImageLinkForm.js and on click sends the image url to the clarifai api.if valid image url, imageUrl state is updated causing 
+		the image to be displayed and then when the image loads, the onLoad event handler calculates the face box. otherwise, the imageUrl is reset and no image is displayed.
 	input: n/a
 	output: n/a
 	*/
@@ -82,8 +78,7 @@ class App extends React.Component {
 	}
 
 	/*
-	description: uses the clarifai api response to calculate the 
-		bounding box around faces and sets it to the box state.
+	description: uses the clarifai api response to calculate the bounding box around faces and sets it to the box state.
 	input: clarifai api response
 	output: n/a
 	*/
@@ -103,11 +98,8 @@ class App extends React.Component {
 	}
 
 	/*
-	description: listens fror onClick events for when the user is
-		trying to change pages and receives the destination route name.
-		the input and imageUrl state must be reset when the page is switched
-		otherwise if the user signs out and signs back in, the previous
-		image will still be displayed
+	description: listens fror onClick events for when the user is trying to change pages and receives the destination route name. the input and imageUrl state must be reset when
+		the page is switched. otherwise if the user signs out and signs back in, the previous image will still be displayed.
 	input: the route name the user is trying to reach
 	output: n/a
 	*/
