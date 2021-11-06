@@ -4,7 +4,7 @@ import brain from "./brain.png";
 
 const Navigation = (props) => {
 
-    // display sign in route navigation
+    // sign in page nav
     if (props.route === "signIn") {
         return(
             <div className="flex">
@@ -16,7 +16,7 @@ const Navigation = (props) => {
                 </nav>
             </div>
         );
-    // display sign up route navigation
+    // sign up page nav
     } else if (props.route === "signUp") {
         return(
             <div className="flex">
@@ -28,7 +28,7 @@ const Navigation = (props) => {
                 </nav>
             </div>
         );
-    // display home route navigation
+    // home page nav
     } else {
         return(
             <div className="flex">

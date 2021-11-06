@@ -50,23 +50,20 @@ class App extends React.Component {
 	}
 
 	/*
-	description: listens to the onClick event in ImageLinkForm.js and on click sends the image url to the clarifai api.if valid image url, imageUrl state is updated causing 
-		the image to be displayed and then when the image loads, the onLoad event handler calculates the face box. otherwise, the imageUrl is reset and no image is displayed.
+	description: listens to the onClick event in ImageLinkForm.js and on click sends the image url to the clarifai api. if valid image url, imageUrl state is updated causing 
+		the image to be displayed and then when the image loads, the onLoad event handler calculates the face box. otherwise, the imageUrl is reset and no image is displayed
+		or the previous image is removed.
 	input: n/a
 	output: n/a
 	*/
-	onButtonSubmit = () => {
-		app.models.predict(Clarifai.FACE_DETECT_MODEL, this.state.input)
-		.then(data => {
-			// if valid url set imageUrl to input and response to clarifaiData
+	onButtonSubmit = async () => {
+		try {
+			const data = await app.models.predict(Clarifai.FACE_DETECT_MODEL, this.state.input);
 			this.setState({
 				imageUrl: this.state.input,
 				clarifaiData: data
 			});
-		})
-		.catch(error => {
-			// if invalid erase previous imageUrl and clarifaiData which removes previous image from display
-			// only need to check if imageUrl is empty since imageUrl and clarifaiData are set in sync
+		} catch (error) {
 			if (this.state.imageUrl !== "") {
 				this.setState({
 					imageUrl: "",
@@ -74,7 +71,7 @@ class App extends React.Component {
 				});
 			}
 			console.log(error);
-		});
+		}
 	}
 
 	/*
@@ -105,18 +102,17 @@ class App extends React.Component {
 	*/
 	onRouteChange = (route) => {
 		this.setState({route: route});
-		// if page is changed reset input state
-		if (this.state.input !== "") {
-			this.setState({input: ""});
-		}
-		// if page is changed reset imageUrl state
-		if (this.state.imageUrl !== "") {
-			this.setState({imageUrl: ""});
-		}
+		if (this.state.input !== "") this.setState({input: ""});
+		if (this.state.imageUrl !== "") this.setState({imageUrl: ""});
 	}
 
+	/* 
+	description: displays different pages based on the route state
+	input: n/a
+	output: n/a
+	*/
 	render() {
-		// display sign in page
+		// sign in page
 		if (this.state.route === "signIn") {
 			return(
 				<div>
@@ -125,7 +121,7 @@ class App extends React.Component {
 					<SignIn onRouteChange={this.onRouteChange}/>
 				</div>
 			);
-		// display sign up page
+		// sign up page
 		} else if (this.state.route === "signUp") {
 			return(
 				<div>
@@ -134,7 +130,7 @@ class App extends React.Component {
 					<SignUp onRouteChange={this.onRouteChange}/>
 				</div>
 			);	
-		// display home page
+		// home page
 		} else {
 			return (
 				<div>
