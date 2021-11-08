@@ -11,7 +11,7 @@ import FaceRecognition from "./components/FaceRecognition/FaceRecognition.js";
 
 // create clarifai object using api key
 const app = new Clarifai.App({
-	apiKey: "Your API Key Here"
+	apiKey: "c90f97e9f7684d219fa18723f497149a"
 });
 
 // customize particles.js
@@ -36,7 +36,8 @@ class App extends React.Component {
 			imageUrl: "",
 			clarifaiData: {},
 			box: {},
-			route: "signIn"
+			route: "signIn",
+			user: {}
 		}
 	}
 
@@ -56,21 +57,29 @@ class App extends React.Component {
 	input: n/a
 	output: n/a
 	*/
-	onButtonSubmit = async () => {
+	onDetectClick = async () => {
 		try {
 			const data = await app.models.predict(Clarifai.FACE_DETECT_MODEL, this.state.input);
 			this.setState({
 				imageUrl: this.state.input,
 				clarifaiData: data
 			});
-		} catch (error) {
+			const res = await fetch("http://localhost:3000/entries", {
+				method: "PUT",
+				headers: {"Content-Type": "application/json"},
+				body: JSON.stringify({id: this.state.user.id})
+			});
+			const entries = await res.json();
+			if (entries === "user does not exist") console.log(entries);
+			else this.setState(Object.assign(this.state.user, {entries: entries}));
+		} catch (err) {
 			if (this.state.imageUrl !== "") {
 				this.setState({
 					imageUrl: "",
 					clarifaiData: {}
 				});
 			}
-			console.log(error);
+			console.log(err);
 		}
 	}
 
@@ -106,6 +115,23 @@ class App extends React.Component {
 		if (this.state.imageUrl !== "") this.setState({imageUrl: ""});
 	}
 
+	/*
+	description: 
+	input: 
+	output: 
+	*/
+	loadUser = (user) => {
+		this.setState({
+			user: {
+				id: user.id,
+				name: user.name,
+				email: user.email,
+				entries: user.entries,
+				joined: user.joined
+			}
+		});
+	}
+
 	/* 
 	description: displays different pages based on the route state
 	input: n/a
@@ -118,7 +144,7 @@ class App extends React.Component {
 				<div>
 					<Particles className="fixed" params={particlesOptions}/>
 					<Navigation route={this.state.route} onRouteChange={this.onRouteChange}/>
-					<SignIn onRouteChange={this.onRouteChange}/>
+					<SignIn loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
 				</div>
 			);
 		// sign up page
@@ -127,7 +153,7 @@ class App extends React.Component {
 				<div>
 					<Particles className="fixed" params={particlesOptions}/>
 					<Navigation route={this.state.route} onRouteChange={this.onRouteChange}/>
-					<SignUp onRouteChange={this.onRouteChange}/>
+					<SignUp loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
 				</div>
 			);	
 		// home page
@@ -136,8 +162,8 @@ class App extends React.Component {
 				<div>
 					<Particles className="fixed" params={particlesOptions}/>
 					<Navigation route={this.state.route} onRouteChange={this.onRouteChange}/>
-					<Rank/>
-					<ImageLinkForm onInputChange={this.onInputChange} onButtonSubmit={this.onButtonSubmit}/>
+					<Rank user={this.state.user}/>
+					<ImageLinkForm onInputChange={this.onInputChange} onDetectClick={this.onDetectClick}/>
 					<FaceRecognition imageUrl={this.state.imageUrl} onImageLoad={this.onImageLoad} box={this.state.box}/>
 				</div>
 			);

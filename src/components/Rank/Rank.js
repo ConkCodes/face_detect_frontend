@@ -1,11 +1,11 @@
 import "./Rank.css";
 
-const Rank = () => {
+const Rank = (props) => {
 
     return(
         <div className="ta-center">
-            <p>Connor, your current entry count is...</p>
-            <p>0</p>
+            <p>{props.user.name}, your current entry count is...</p>
+            <p>{props.user.entries}</p>
         </div>
     );
 
