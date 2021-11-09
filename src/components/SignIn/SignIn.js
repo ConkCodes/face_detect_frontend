@@ -12,18 +12,18 @@ class SignIn extends React.Component {
     }
 
     /*
-	description: 
-	input: 
-	output: 
+	description: listens to the onChange event and sets the input value to email state.
+	input: onChange event
+	output: n/a
 	*/
     onEmailChange = (event) => {
         this.setState({email: event.target.value});
     }
 
 	/*
-	description: 
-	input: 
-	output: 
+	description: listens to the onChange event and sets the input value to password state.
+	input: onChange event
+	output: n/a
 	*/
     onPasswordChange = (event) => {
         this.setState({password: event.target.value});
@@ -31,8 +31,12 @@ class SignIn extends React.Component {
 
 	/*
 	description: 
-	input: 
-	output: 
+        listens to the onClick event on the sign in button.
+        attempts to find user in the database.
+        if valid user, user is loaded to user state in app.js and route is changed to home.
+        if invalid user, user must try to sign in again.
+	input: n/a
+	output: n/a
 	*/
     onSignInClick = async () => {
         try {

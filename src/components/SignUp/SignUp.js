@@ -13,27 +13,27 @@ class SignUp extends React.Component {
     }
 
     /*
-	description: 
-	input: 
-	output: 
+	description: listens to the onChange event and sets the input value to name state.
+	input: onChange event
+	output: n/a
 	*/
     onNameChange = (event) => {
         this.setState({name: event.target.value})
     }
 
     /*
-	description: 
-	input: 
-	output: 
+	description: listens to the onChange event and sets the input value to email state.
+	input: onChange event
+	output: n/a
 	*/
     onEmailChange = (event) => {
         this.setState({email: event.target.value})
     }
 
     /*
-	description: 
-	input: 
-	output: 
+	description: listens to the onChange event and sets the input value to password state.
+	input: onChange event
+	output: n/a
 	*/
     onPasswordChange = (event) => {
         this.setState({password: event.target.value})
@@ -41,8 +41,12 @@ class SignUp extends React.Component {
 
     /*
 	description: 
-	input: 
-	output: 
+        listens to the onClick event on the sign up button.
+        attempts to post new user to the database.
+        if valid new user, user is loaded to user state in app.js and route is changed to home.
+        if invalid new user, user must try to sign up again.
+	input: n/a
+	output: n/a
 	*/
     onSignUpClick = async () => {
         try {

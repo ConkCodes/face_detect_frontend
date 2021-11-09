@@ -43,7 +43,7 @@ class App extends React.Component {
 
 	/*
 	description: listens to the onChange event in ImageLinkForm.js and sets the input value to input state.
-	input: onClick event
+	input: onChange event
 	output: n/a
 	*/
 	onInputChange = (event) => {
@@ -51,9 +51,10 @@ class App extends React.Component {
 	}
 
 	/*
-	description: listens to the onClick event in ImageLinkForm.js and on click sends the image url to the clarifai api. if valid image url, imageUrl state is updated causing 
-		the image to be displayed and then when the image loads, the onLoad event handler calculates the face box. otherwise, the imageUrl is reset and no image is displayed
-		or the previous image is removed.
+	description: 
+		listens to the onClick event in ImageLinkForm.js and on click sends the image url to the clarifai api.
+		if image url is valid, imageUrl state is updated causing the image to be displayed and the user's entries count is updated. 
+		if image url is invalid, the imageUrl is reset and no new image is displayed or the previous image is removed.
 	input: n/a
 	output: n/a
 	*/
@@ -84,7 +85,9 @@ class App extends React.Component {
 	}
 
 	/*
-	description: uses the clarifai api response to calculate the bounding box around faces and sets it to the box state.
+	description: 
+		uses the clarifai api response to calculate the bounding box around faces and sets it to the box state.
+		must wait for image to load to ensure proper width and height attributes are used.
 	input: clarifai api response
 	output: n/a
 	*/
@@ -104,8 +107,10 @@ class App extends React.Component {
 	}
 
 	/*
-	description: listens fror onClick events for when the user is trying to change pages and receives the destination route name. the input and imageUrl state must be reset when
-		the page is switched. otherwise if the user signs out and signs back in, the previous image will still be displayed.
+	description: 
+		listens for onClick events for when the user is trying to change pages and receives the destination route name. 
+		the input and imageUrl state must be reset when the page is switched. 
+		otherwise if the user signs out and signs back in, the previous image will still be displayed.
 	input: the route name the user is trying to reach
 	output: n/a
 	*/
@@ -116,8 +121,8 @@ class App extends React.Component {
 	}
 
 	/*
-	description: 
-	input: 
+	description: called by functions in signIn.js and signUp.js and loads user information.
+	input: user n/a
 	output: 
 	*/
 	loadUser = (user) => {
@@ -138,7 +143,6 @@ class App extends React.Component {
 	output: n/a
 	*/
 	render() {
-		// sign in page
 		if (this.state.route === "signIn") {
 			return(
 				<div>
@@ -147,7 +151,6 @@ class App extends React.Component {
 					<SignIn loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
 				</div>
 			);
-		// sign up page
 		} else if (this.state.route === "signUp") {
 			return(
 				<div>
@@ -156,7 +159,6 @@ class App extends React.Component {
 					<SignUp loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
 				</div>
 			);	
-		// home page
 		} else {
 			return (
 				<div>
