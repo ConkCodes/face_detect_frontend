@@ -86,3 +86,7 @@ button:hover {
     background-clip: text;
     color: transparent;
 }
+
+.b {
+    font-weight: bold;
+}

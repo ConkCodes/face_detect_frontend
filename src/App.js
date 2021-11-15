@@ -11,7 +11,7 @@ import FaceRecognition from "./components/FaceRecognition/FaceRecognition.js";
 
 // create clarifai object using api key
 const app = new Clarifai.App({
-	apiKey: "Your API Key Here"
+	apiKey: "c90f97e9f7684d219fa18723f497149a"
 });
 
 // customize particles.js
@@ -220,7 +220,7 @@ class App extends React.Component {
 		} else if (this.state.route === "signUp") {
 			return(
 				<div>
-					<Particles className="fixed" params={particlesOptions}/>
+					<Particles className="fixed" id="tsparticles" options={particlesOptions}/>
 					<Navigation route={this.state.route} onRouteChange={this.onRouteChange}/>
 					<SignUp loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
 				</div>
@@ -228,7 +228,7 @@ class App extends React.Component {
 		} else {
 			return (
 				<div>
-					<Particles className="fixed" params={particlesOptions}/>
+					<Particles className="fixed" id="tsparticles" options={particlesOptions}/>
 					<Navigation route={this.state.route} onRouteChange={this.onRouteChange}/>
 					<Rank name={this.state.user.name} entries={this.state.user.entries}/>
 					<ImageLinkForm onInputChange={this.onInputChange} onDetectClick={this.onDetectClick}/>

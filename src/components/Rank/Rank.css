@@ -8,3 +8,19 @@
     background-clip: text;
     color: transparent;
 }
+
+.mt-32 {
+    margin-top: 2rem;
+}
+
+.mb-0 {
+    margin-bottom: 0;
+}
+
+.mt-0 {
+    margin-top: 0;
+}
+
+.b {
+    font-weight: bold;
+}
