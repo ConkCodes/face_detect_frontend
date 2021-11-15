@@ -11,7 +11,7 @@ const Navigation = (props) => {
                     <img className="h-80p w-80p" alt="brain" src={brain}/>
                 </Tilt>
                 <nav className="ml-auto">
-                    <p onClick={() => props.onRouteChange("signUp")} className="pr-32 link">Sign Up</p>
+                    <p onClick={() => props.onRouteChange("signUp")} className="pr-32 link c-white">Sign Up</p>
                 </nav>
             </div>
         );
@@ -22,7 +22,7 @@ const Navigation = (props) => {
                     <img className="h-80p w-80p" alt="brain" src={brain}/>
                 </Tilt>
                 <nav className="ml-auto">
-                    <p onClick={() => props.onRouteChange("signIn")} className="pr-32 link">Sign In</p>
+                    <p onClick={() => props.onRouteChange("signIn")} className="pr-32 link c-white">Sign In</p>
                 </nav>
             </div>
         );
@@ -33,7 +33,7 @@ const Navigation = (props) => {
                     <img className="h-80p w-80p" alt="brain" src={brain}/>
                 </Tilt>
                 <nav className="ml-auto">
-                    <p onClick={() => props.onRouteChange("signIn")} className="pr-32 link">Sign Out</p>
+                    <p onClick={() => props.onRouteChange("signIn")} className="pr-32 link c-white">Sign Out</p>
                 </nav>
             </div>
         );

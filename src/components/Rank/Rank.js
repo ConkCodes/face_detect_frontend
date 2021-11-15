@@ -4,8 +4,8 @@ const Rank = (props) => {
 
     return(
         <div className="ta-center">
-            <p>{props.name}, your current entry count is...</p>
-            <p>{props.entries}</p>
+            <p className="c-gradient">{props.name}, your current entry count is...</p>
+            <p className="c-gradient">{props.entries}</p>
         </div>
     );
 

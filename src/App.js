@@ -1,7 +1,7 @@
 import React from "react";
 import './App.css';
 import Clarifai from "clarifai";
-import Particles from "react-particles-js";
+import Particles from "react-tsparticles";
 import Navigation from "./components/Navigation/Navigation.js";
 import SignIn from "./components/SignIn/SignIn.js";
 import SignUp from "./components/SignUp/SignUp.js"
@@ -16,15 +16,81 @@ const app = new Clarifai.App({
 
 // customize particles.js
 const particlesOptions = {
+	background: {
+		color: {
+			value: "#0d47a1",
+		},
+	},
+	fpsLimit: 60,
+	interactivity: {
+		events: {
+			onClick: {
+				enable: true,
+				mode: "push",
+			},
+			onHover: {
+				enable: true,
+				mode: "repulse",
+			},
+			resize: true,
+		},
+		modes: {
+			bubble: {
+				distance: 400,
+				duration: 2,
+				opacity: 0.8,
+				size: 40,
+			},
+			push: {
+				quantity: 4,
+			},
+			repulse: {
+				distance: 200,
+				duration: 0.4,
+			},
+		},
+	},
 	particles: {
+		color: {
+			value: "#ffffff",
+		},
+		links: {
+			color: "#ffffff",
+			distance: 150,
+			enable: true,
+			opacity: 0.5,
+			width: 1,
+		},
+		collisions: {
+			enable: true,
+		},
+		move: {
+			direction: "none",
+			enable: true,
+			outMode: "bounce",
+			random: false,
+			speed: 6,
+			straight: false,
+		},
 		number: {
-			value: 30,
 			density: {
 				enable: true,
-				value_area: 300
-			}
-		}
-	}
+				value_area: 800,
+			},
+			value: 80,
+		},
+		opacity: {
+			value: 0.5,
+		},
+		shape: {
+			type: "circle",
+		},
+		size: {
+			random: true,
+			value: 5,
+		},
+	},
+	detectRetina: true,
 }
 
 class App extends React.Component {
@@ -98,9 +164,9 @@ class App extends React.Component {
 		const height = Number(image.height);
 		this.setState({
 			box: {
-				left: boundingBox.left_col * width,
-				top: boundingBox.top_row * height,
-				right: width - boundingBox.right_col * width,
+				left: boundingBox.left_col * width, 
+				top: boundingBox.top_row * height, 
+				right: width - boundingBox.right_col * width, 
 				bottom: height - boundingBox.bottom_row * height
 			}
 		});
@@ -146,7 +212,7 @@ class App extends React.Component {
 		if (this.state.route === "signIn") {
 			return(
 				<div>
-					<Particles className="fixed" params={particlesOptions}/>
+					<Particles className="fixed" id="tsparticles" options={particlesOptions}/>
 					<Navigation route={this.state.route} onRouteChange={this.onRouteChange}/>
 					<SignIn loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
 				</div>

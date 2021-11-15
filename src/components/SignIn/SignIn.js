@@ -49,8 +49,7 @@ class SignIn extends React.Component {
                 })
             })
             const user = await res.json();
-            if (user === "invalid username or password") console.log(user);
-            else {
+            if (user.id)  {
                 this.props.loadUser(user);
                 this.props.onRouteChange("home");
             }

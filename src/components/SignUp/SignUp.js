@@ -53,15 +53,10 @@ class SignUp extends React.Component {
             const res = await fetch("http://localhost:3000/signUp", {
                 method: "POST",
                 headers: {"Content-Type": "application/json"},
-                body: JSON.stringify({
-                    name: this.state.name,
-                    email: this.state.email,
-                    password: this.state.password
-                })
+                body: JSON.stringify({name: this.state.name, email: this.state.email, password: this.state.password})
             });
             const user = await res.json();
-            if (user === "email already exists in the database") console.log(user);
-            else {
+            if (user.id) {
                 this.props.loadUser(user);
                 this.props.onRouteChange("home");
             }
