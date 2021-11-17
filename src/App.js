@@ -11,7 +11,7 @@ import FaceRecognition from "./components/FaceRecognition/FaceRecognition.js";
 
 // create clarifai object using api key
 const app = new Clarifai.App({
-	apiKey: "c90f97e9f7684d219fa18723f497149a"
+	apiKey: "your api key here"
 });
 
 // customize particles.js
