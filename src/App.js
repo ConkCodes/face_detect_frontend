@@ -11,7 +11,7 @@ import FaceRecognition from "./components/FaceRecognition/FaceRecognition.js";
 
 // create clarifai object using api key
 const app = new Clarifai.App({
-	apiKey: "Your API Key Here"
+	apiKey: "c90f97e9f7684d219fa18723f497149a"
 });
 
 // customize particles.js
@@ -91,6 +91,15 @@ const particlesOptions = {
 		},
 	},
 	detectRetina: true,
+}
+
+const initialState = {
+	input: "",
+	imageUrl: "",
+	clarifaiData: {},
+	box: {},
+	route: "signIn",
+	user: {}
 }
 
 class App extends React.Component {
@@ -175,15 +184,14 @@ class App extends React.Component {
 	/*
 	description: 
 		listens for onClick events for when the user is trying to change pages and receives the destination route name. 
-		the input and imageUrl state must be reset when the page is switched. 
+		the state must be reset if user signs out.
 		otherwise if the user signs out and signs back in, the previous image will still be displayed.
 	input: the route name the user is trying to reach
 	output: n/a
 	*/
 	onRouteChange = (route) => {
 		this.setState({route: route});
-		if (this.state.input !== "") this.setState({input: ""});
-		if (this.state.imageUrl !== "") this.setState({imageUrl: ""});
+		if (route === "signOut") this.setState(initialState);
 	}
 
 	/*
@@ -209,10 +217,10 @@ class App extends React.Component {
 	output: n/a
 	*/
 	render() {
-		if (this.state.route === "signIn") {
+		if (this.state.route === "signIn" || this.state.route === "signOut") {
 			return(
 				<div>
-					<Particles className="fixed" id="tsparticles" options={particlesOptions}/>
+					<Particles className="fixed" options={particlesOptions}/>
 					<Navigation route={this.state.route} onRouteChange={this.onRouteChange}/>
 					<SignIn loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
 				</div>
@@ -220,15 +228,15 @@ class App extends React.Component {
 		} else if (this.state.route === "signUp") {
 			return(
 				<div>
-					<Particles className="fixed" id="tsparticles" options={particlesOptions}/>
+					<Particles className="fixed" options={particlesOptions}/>
 					<Navigation route={this.state.route} onRouteChange={this.onRouteChange}/>
 					<SignUp loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
 				</div>
 			);	
-		} else {
+		} else if (this.state.route === "home") {
 			return (
 				<div>
-					<Particles className="fixed" id="tsparticles" options={particlesOptions}/>
+					<Particles className="fixed" options={particlesOptions}/>
 					<Navigation route={this.state.route} onRouteChange={this.onRouteChange}/>
 					<Rank name={this.state.user.name} entries={this.state.user.entries}/>
 					<ImageLinkForm onInputChange={this.onInputChange} onDetectClick={this.onDetectClick}/>

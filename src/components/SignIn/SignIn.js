@@ -12,6 +12,15 @@ class SignIn extends React.Component {
     }
 
     /*
+    description: sets focus to first input on page load.
+    input: n/a
+    output: n/a
+    */
+    componentDidMount() {
+        document.getElementById("emailInput").focus();
+    }
+
+    /*
 	description: listens to the onChange event and sets the input value to email state.
 	input: onChange event
 	output: n/a
@@ -63,7 +72,7 @@ class SignIn extends React.Component {
             <div className="card w-400 plr-80 ptb-48 m-auto mt-32">
                 <p className="mt-0 fs-150 b">Sign In</p>
                 <p className="mb-0">Email</p>
-                <input onChange={this.onEmailChange} type="text" className="input w-max bs-border"/>
+                <input id="emailInput" onChange={this.onEmailChange} type="text" className="input w-max bs-border"/>
                 <p className="mb-0">Password</p>
                 <input onChange={this.onPasswordChange} type="password" className="input w-max bs-border"/>
                 <button onClick={this.onSignInClick} className="button mt-16">Sign In</button>
