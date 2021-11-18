@@ -17,7 +17,7 @@ class ImageLinkForm extends React.Component {
             <div className="flex fd-column ai-center">
                 <p className="mb-0 c-gradient b fs-150">Enter an Image Link for the Magic Brain to Detect Human Faces</p>
                 <div className="w-512 flex p-16 m-16 card">
-                    <input id="detectInput" onChange={this.props.onInputChange} type="text" className="w-70p input"/>
+                    <input id="detectInput" onKeyPress={this.props.onEnterPress} onChange={this.props.onInputChange} type="text" className="w-70p input"/>
                     <button onClick={this.props.onDetectClick} className="w-30p button">Detect</button>
                 </div>
             </div>

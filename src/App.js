@@ -11,7 +11,7 @@ import FaceRecognition from "./components/FaceRecognition/FaceRecognition.js";
 
 // create clarifai object using api key
 const app = new Clarifai.App({
-	apiKey: "you api key here"
+	apiKey: "your api key here"
 });
 
 // customize particles.js
@@ -93,6 +93,7 @@ const particlesOptions = {
 	detectRetina: true,
 }
 
+// saves intial state as a content for when state needs to be reset
 const initialState = {
 	input: "",
 	imageUrl: "",
@@ -126,36 +127,58 @@ class App extends React.Component {
 	}
 
 	/*
-	description: 
-		listens to the onClick event in ImageLinkForm.js and on click sends the image url to the clarifai api.
-		if image url is valid, imageUrl state is updated causing the image to be displayed and the user's entries count is updated. 
-		if image url is invalid, the imageUrl is reset and no new image is displayed or the previous image is removed.
+	description: listens to the onKeyPress event and calls faceDetect() when the enter key is pressed.
+	input: onKeyPress event
+	output: n/a
+	*/
+    onEnterPress = (event) => {
+        if (event.key === "Enter") this.faceDetect();
+    }
+
+	/*
+	description: listens to the onClick event in ImageLinkForm.js and calls faceDetect().
 	input: n/a
 	output: n/a
 	*/
-	onDetectClick = async () => {
+	onDetectClick = () => {
+		this.faceDetect();
+	}
+
+	/*
+	description: displays image, get face box data, and updates user entry count.
+	input: n/a
+	output: n/a
+	*/
+	faceDetect = async () => {
 		try {
+			// call clarifai face detect api with image url
 			const data = await app.models.predict(Clarifai.FACE_DETECT_MODEL, this.state.input);
-			this.setState({
-				imageUrl: this.state.input,
-				clarifaiData: data
-			});
+			// update user entries count
 			const res = await fetch("http://localhost:3000/user/entries", {
 				method: "PUT",
 				headers: {"Content-Type": "application/json"},
 				body: JSON.stringify({id: this.state.user.id})
 			});
 			const entries = await res.json();
-			if (entries === "user does not exist") console.log(entries);
-			else this.setState(Object.assign(this.state.user, {entries: entries}));
+			if (entries !== "user does not exist") this.setState(Object.assign(this.state.user, {entries: entries}));
+			// could not find user
+			else throw new Error(entries);
+			// if image url is valid and user entries is successfully updated -> update image url state to display image and update clarifai data to calculate face box
+			this.setState({
+				imageUrl: this.state.input,
+				clarifaiData: data
+			});
+		// error
 		} catch (err) {
+			// log error
+			console.log(err);
+			// reset state if api or database fails
 			if (this.state.imageUrl !== "") {
 				this.setState({
 					imageUrl: "",
 					clarifaiData: {}
 				});
 			}
-			console.log(err);
 		}
 	}
 
@@ -239,7 +262,7 @@ class App extends React.Component {
 					<Particles className="fixed" options={particlesOptions}/>
 					<Navigation route={this.state.route} onRouteChange={this.onRouteChange}/>
 					<Rank name={this.state.user.name} entries={this.state.user.entries}/>
-					<ImageLinkForm onInputChange={this.onInputChange} onDetectClick={this.onDetectClick}/>
+					<ImageLinkForm onInputChange={this.onInputChange} onEnterPress={this.onEnterPress} onDetectClick={this.onDetectClick}/>
 					<FaceRecognition imageUrl={this.state.imageUrl} onImageLoad={this.onImageLoad} box={this.state.box}/>
 				</div>
 			);

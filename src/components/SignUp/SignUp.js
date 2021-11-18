@@ -49,6 +49,24 @@ class SignUp extends React.Component {
     }
 
     /*
+	description: listens to the onKeyPress event and calls signUp() when the enter key is pressed.
+	input: onKeyPress event
+	output: n/a
+	*/
+    onEnterPress = (event) => {
+        if (event.key === "Enter") this.signUp();
+    }
+
+    /*
+	description: listens to the onClick event and calls the sign up function when the sign up button is clicked.
+	input: n/a
+	output: n/a
+	*/
+    onSignUpClick = () => {
+        this.signUp();
+    }
+
+        /*
 	description: 
         listens to the onClick event on the sign up button.
         attempts to post new user to the database.
@@ -57,7 +75,7 @@ class SignUp extends React.Component {
 	input: n/a
 	output: n/a
 	*/
-    onSignUpClick = async () => {
+    signUp = async () => {
         try {
             const res = await fetch("http://localhost:3000/user/signUp", {
                 method: "POST",
@@ -79,11 +97,11 @@ class SignUp extends React.Component {
             <div className="card w-400 plr-80 ptb-48 m-auto mt-32">
                 <p className="mt-0 fs-150 b">Sign Up</p>
                 <p className="mb-0">Name</p>
-                <input id="nameInput" onChange={this.onNameChange} type="text" className="input w-max bs-border"/>
+                <input id="nameInput" onKeyPress={this.onEnterPress} onChange={this.onNameChange} type="text" className="input w-max bs-border"/>
                 <p className="mb-0">Email</p>
-                <input onChange={this.onEmailChange} type="text" className="input w-max bs-border"/>
+                <input onKeyPress={this.onEnterPress} onChange={this.onEmailChange} type="text" className="input w-max bs-border"/>
                 <p className="mb-0">Password</p>
-                <input onChange={this.onPasswordChange} type="password" className="input w-max bs-border"/>
+                <input onKeyPress={this.onEnterPress} onChange={this.onPasswordChange} type="password" className="input w-max bs-border"/>
                 <button onClick={this.onSignUpClick} className="button mt-16">Sign Up</button>
             </div>
         );

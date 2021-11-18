@@ -38,7 +38,25 @@ class SignIn extends React.Component {
         this.setState({password: event.target.value});
     }
 
-	/*
+    /*
+	description: listens to the onKeyPress event and calls signIn() when the enter key is pressed.
+	input: onKeyPress event
+	output: n/a
+	*/
+    onEnterPress = (event) => {
+        if (event.key === "Enter") this.signIn();
+    }
+
+    /*
+	description: listens to the onClick event and calls the sign in function when the sign in button is clicked.
+	input: 
+	output: n/a
+	*/
+    onSignInClick = () => {
+        this.signIn();
+    }
+
+    /*
 	description: 
         listens to the onClick event on the sign in button.
         attempts to find user in the database.
@@ -47,7 +65,7 @@ class SignIn extends React.Component {
 	input: n/a
 	output: n/a
 	*/
-    onSignInClick = async () => {
+    signIn = async () => {
         try {
             const res = await fetch("http://localhost:3000/user/signIn", {
                 method: "POST",
@@ -72,9 +90,9 @@ class SignIn extends React.Component {
             <div className="card w-400 plr-80 ptb-48 m-auto mt-32">
                 <p className="mt-0 fs-150 b">Sign In</p>
                 <p className="mb-0">Email</p>
-                <input id="emailInput" onChange={this.onEmailChange} type="text" className="input w-max bs-border"/>
+                <input id="emailInput" onKeyPress={this.onEnterPress} onChange={this.onEmailChange} type="text" className="input w-max bs-border"/>
                 <p className="mb-0">Password</p>
-                <input onChange={this.onPasswordChange} type="password" className="input w-max bs-border"/>
+                <input onKeyPress={this.onEnterPress} onChange={this.onPasswordChange} type="password" className="input w-max bs-border"/>
                 <button onClick={this.onSignInClick} className="button mt-16">Sign In</button>
                 <p className="mb-0">Don't have an account? <span onClick={() => this.props.onRouteChange("signUp")}className="link">Sign up</span></p>
             </div>
