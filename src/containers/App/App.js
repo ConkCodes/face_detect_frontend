@@ -2,17 +2,15 @@ import React from "react";
 import './App.css';
 import Clarifai from "clarifai";
 import Particles from "react-tsparticles";
-import Navigation from "../components/Navigation/Navigation.js";
-import SignIn from "../components/SignIn/SignIn.js";
-import SignUp from "../components/SignUp/SignUp.js"
-import Rank from "../components/Rank/Rank.js";
-import ImageLinkForm from "../components/ImageLinkForm/ImageLinkForm.js"
-import FaceRecognition from "../components/FaceRecognition/FaceRecognition.js";
+import Navigation from "../../components/Navigation/Navigation.js";
+import SignIn from "../../components/SignIn/SignIn.js";
+import SignUp from "../../components/SignUp/SignUp.js"
+import Rank from "../../components/Rank/Rank.js";
+import ImageLinkForm from "../../components/ImageLinkForm/ImageLinkForm.js"
+import FaceRecognition from "../../components/FaceRecognition/FaceRecognition.js";
 
 // create clarifai object using api key
-const app = new Clarifai.App({
-	apiKey: "your api key here"
-});
+const app = new Clarifai.App({apiKey: "your api key here"});
 
 // customize particles.js
 const particlesOptions = {
