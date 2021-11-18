@@ -11,7 +11,7 @@ import FaceRecognition from "./components/FaceRecognition/FaceRecognition.js";
 
 // create clarifai object using api key
 const app = new Clarifai.App({
-	apiKey: "your api key here"
+	apiKey: "you api key here"
 });
 
 // customize particles.js
@@ -140,7 +140,7 @@ class App extends React.Component {
 				imageUrl: this.state.input,
 				clarifaiData: data
 			});
-			const res = await fetch("http://localhost:3000/entries", {
+			const res = await fetch("http://localhost:3000/user/entries", {
 				method: "PUT",
 				headers: {"Content-Type": "application/json"},
 				body: JSON.stringify({id: this.state.user.id})

@@ -49,7 +49,7 @@ class SignIn extends React.Component {
 	*/
     onSignInClick = async () => {
         try {
-            const res = await fetch("http://localhost:3000/signIn", {
+            const res = await fetch("http://localhost:3000/user/signIn", {
                 method: "POST",
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify({

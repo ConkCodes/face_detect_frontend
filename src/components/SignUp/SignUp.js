@@ -59,7 +59,7 @@ class SignUp extends React.Component {
 	*/
     onSignUpClick = async () => {
         try {
-            const res = await fetch("http://localhost:3000/signUp", {
+            const res = await fetch("http://localhost:3000/user/signUp", {
                 method: "POST",
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify({name: this.state.name, email: this.state.email, password: this.state.password})
