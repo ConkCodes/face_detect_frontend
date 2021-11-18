@@ -3,7 +3,7 @@ import Tilt from "react-parallax-tilt";
 import brain from "./brain.png";
 
 const Navigation = (props) => {
-
+    // display sign in page nav
     if (props.route === "signIn") {
         return(
             <div className="flex">
@@ -15,6 +15,7 @@ const Navigation = (props) => {
                 </nav>
             </div>
         );
+    // display sign up page nav
     } else if (props.route === "signUp") {
         return(
             <div className="flex">
@@ -26,6 +27,7 @@ const Navigation = (props) => {
                 </nav>
             </div>
         );
+    // display home page nav
     } else if (props.route === "home") {
         return(
             <div className="flex">

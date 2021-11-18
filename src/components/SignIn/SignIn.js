@@ -57,16 +57,13 @@ class SignIn extends React.Component {
     }
 
     /*
-	description: 
-        listens to the onClick event on the sign in button.
-        attempts to find user in the database.
-        if valid user, user is loaded to user state in app.js and route is changed to home.
-        if invalid user, user must try to sign in again.
+	description: attempts to sign in user, set user state in app.js, and send user to the home page.
 	input: n/a
 	output: n/a
 	*/
     signIn = async () => {
         try {
+            // attempt to sign in user
             const res = await fetch("http://localhost:3000/user/signIn", {
                 method: "POST",
                 headers: {"Content-Type": "application/json"},
@@ -76,11 +73,15 @@ class SignIn extends React.Component {
                 })
             })
             const user = await res.json();
+            // success -> set user state & switch to home page
             if (user.id)  {
                 this.props.loadUser(user);
                 this.props.onRouteChange("home");
-            }
+            // fail -> throw error
+            } else throw new Error(user);
+        // error
         } catch (err) {
+            // log error
             console.log(err);
         }
     }

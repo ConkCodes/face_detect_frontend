@@ -183,9 +183,7 @@ class App extends React.Component {
 	}
 
 	/*
-	description: 
-		uses the clarifai api response to calculate the bounding box around faces and sets it to the box state.
-		must wait for image to load to ensure proper width and height attributes are used.
+	description: waits for image load to use width, height, and clarifai data to calculate and display the face box.
 	input: clarifai api response
 	output: n/a
 	*/
@@ -194,6 +192,7 @@ class App extends React.Component {
 		const image = document.getElementById("inputImage");
 		const width = Number(image.width);
 		const height = Number(image.height);
+		// calculations
 		this.setState({
 			box: {
 				left: boundingBox.left_col * width, 
@@ -205,22 +204,19 @@ class App extends React.Component {
 	}
 
 	/*
-	description: 
-		listens for onClick events for when the user is trying to change pages and receives the destination route name. 
-		the state must be reset if user signs out.
-		otherwise if the user signs out and signs back in, the previous image will still be displayed.
-	input: the route name the user is trying to reach
+	description: updates route state and resets state if user logs out.
+	input: route name
 	output: n/a
 	*/
 	onRouteChange = (route) => {
-		this.setState({route: route});
-		if (route === "signOut") this.setState(initialState);
+		if (route !== "signOut") this.setState({route: route});
+		else this.setState(initialState);
 	}
 
 	/*
 	description: called by functions in signIn.js and signUp.js and loads user information.
-	input: user n/a
-	output: 
+	input: user
+	output: n/a
 	*/
 	loadUser = (user) => {
 		this.setState({
@@ -240,7 +236,8 @@ class App extends React.Component {
 	output: n/a
 	*/
 	render() {
-		if (this.state.route === "signIn" || this.state.route === "signOut") {
+		// display sign in page
+		if (this.state.route === "signIn") {
 			return(
 				<div>
 					<Particles className="fixed" options={particlesOptions}/>
@@ -248,6 +245,7 @@ class App extends React.Component {
 					<SignIn loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
 				</div>
 			);
+		// display sign up page
 		} else if (this.state.route === "signUp") {
 			return(
 				<div>
@@ -255,7 +253,8 @@ class App extends React.Component {
 					<Navigation route={this.state.route} onRouteChange={this.onRouteChange}/>
 					<SignUp loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
 				</div>
-			);	
+			);
+		// display home page
 		} else if (this.state.route === "home") {
 			return (
 				<div>
@@ -268,7 +267,6 @@ class App extends React.Component {
 			);
 		}
 	}
-
 }
 
 export default App;

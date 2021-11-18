@@ -2,12 +2,12 @@ import "./FaceRecognition.css";
 
 const FaceRecognition = (props) => {
 
-    // invalid imageUrl - display nothing
+    // invalid imageUrl -> display nothing
     if (props.imageUrl === "") {
         return(
             <div></div>
         ); 
-    // valid imageUrl - display image and face box if found
+    // valid imageUrl -> display image and face box if found
     } else {
         return(
             <div className="flex jc-center">

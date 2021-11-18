@@ -67,27 +67,28 @@ class SignUp extends React.Component {
     }
 
         /*
-	description: 
-        listens to the onClick event on the sign up button.
-        attempts to post new user to the database.
-        if valid new user, user is loaded to user state in app.js and route is changed to home.
-        if invalid new user, user must try to sign up again.
+	description: attempts to sign up user, set user state in app.js, and send user to the home page.
 	input: n/a
 	output: n/a
 	*/
     signUp = async () => {
         try {
+            // attempt to sign up user
             const res = await fetch("http://localhost:3000/user/signUp", {
                 method: "POST",
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify({name: this.state.name, email: this.state.email, password: this.state.password})
             });
             const user = await res.json();
+            // success -> set user state & switch to home page
             if (user.id) {
                 this.props.loadUser(user);
                 this.props.onRouteChange("home");
-            }
+            // fail -> throw error
+            } else throw new Error(user);
+        // error
         } catch (err) {
+            // log error
             console.log(err);
         }
     }
