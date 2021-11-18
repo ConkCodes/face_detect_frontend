@@ -105,14 +105,7 @@ class App extends React.Component {
 
 	constructor() {
 		super();
-		this.state = {
-			input: "",
-			imageUrl: "",
-			clarifaiData: {},
-			box: {},
-			route: "signIn",
-			user: {}
-		}
+		this.state = initialState;
 	}
 
 	/*
