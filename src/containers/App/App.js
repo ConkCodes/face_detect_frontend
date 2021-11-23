@@ -1,16 +1,10 @@
 import React from "react";
 import './App.css';
-import Clarifai from "clarifai";
 import Particles from "react-tsparticles";
 import Navigation from "../../components/Navigation/Navigation.js";
-import SignIn from "../../components/SignIn/SignIn.js";
-import SignUp from "../../components/SignUp/SignUp.js"
-import Rank from "../../components/Rank/Rank.js";
-import ImageLinkForm from "../../components/ImageLinkForm/ImageLinkForm.js"
-import FaceRecognition from "../../components/FaceRecognition/FaceRecognition.js";
-
-// create clarifai object using api key
-const app = new Clarifai.App({apiKey: process.env.REACT_APP_KEY});
+import SignIn from "../SignIn/SignIn.js";
+import SignUp from "../SignUp/SignUp.js";
+import Home from "../Home/Home.js";
 
 // customize particles.js
 const particlesOptions = {
@@ -93,10 +87,6 @@ const particlesOptions = {
 
 // saves intial state as a content for when state needs to be reset
 const initialState = {
-	input: "",
-	imageUrl: "",
-	clarifaiData: {},
-	box: {},
 	route: "signIn",
 	user: {}
 }
@@ -109,92 +99,6 @@ class App extends React.Component {
 	}
 
 	/*
-	description: listens to the onChange event in ImageLinkForm.js and sets the input value to input state.
-	input: onChange event
-	output: n/a
-	*/
-	onInputChange = (event) => {
-		this.setState({input: event.target.value});
-	}
-
-	/*
-	description: listens to the onKeyPress event and calls faceDetect() when the enter key is pressed.
-	input: onKeyPress event
-	output: n/a
-	*/
-    onEnterPress = (event) => {
-        if (event.key === "Enter") this.faceDetect();
-    }
-
-	/*
-	description: listens to the onClick event in ImageLinkForm.js and calls faceDetect().
-	input: n/a
-	output: n/a
-	*/
-	onDetectClick = () => {
-		this.faceDetect();
-	}
-
-	/*
-	description: displays image, get face box data, and updates user entry count.
-	input: n/a
-	output: n/a
-	*/
-	faceDetect = async () => {
-		try {
-			// call clarifai face detect api with image url
-			const data = await app.models.predict(Clarifai.FACE_DETECT_MODEL, this.state.input);
-			// update user entries count
-			const res = await fetch("http://localhost:3000/user/entries", {
-				method: "PUT",
-				headers: {"Content-Type": "application/json"},
-				body: JSON.stringify({id: this.state.user.id})
-			});
-			const entries = await res.json();
-			if (entries !== "user does not exist") this.setState(Object.assign(this.state.user, {entries: entries}));
-			// could not find user
-			else throw new Error(entries);
-			// if image url is valid and user entries is successfully updated -> update image url state to display image and update clarifai data to calculate face box
-			this.setState({
-				imageUrl: this.state.input,
-				clarifaiData: data
-			});
-		// error
-		} catch (err) {
-			// log error
-			console.log(err);
-			// reset state if api or database fails
-			if (this.state.imageUrl !== "") {
-				this.setState({
-					imageUrl: "",
-					clarifaiData: {}
-				});
-			}
-		}
-	}
-
-	/*
-	description: waits for image load to use width, height, and clarifai data to calculate and display the face box.
-	input: clarifai api response
-	output: n/a
-	*/
-	onImageLoad = () => {
-		const boundingBox = this.state.clarifaiData.outputs[0].data.regions[0].region_info.bounding_box;
-		const image = document.getElementById("inputImage");
-		const width = Number(image.width);
-		const height = Number(image.height);
-		// calculations
-		this.setState({
-			box: {
-				left: boundingBox.left_col * width, 
-				top: boundingBox.top_row * height, 
-				right: width - boundingBox.right_col * width, 
-				bottom: height - boundingBox.bottom_row * height
-			}
-		});
-	}
-
-	/*
 	description: updates route state and resets state if user logs out.
 	input: route name
 	output: n/a
@@ -202,6 +106,15 @@ class App extends React.Component {
 	onRouteChange = (route) => {
 		if (route !== "signOut") this.setState({route: route});
 		else this.setState(initialState);
+	}
+
+	/*
+	description: 
+	input: 
+	output: 
+	*/
+	updateEntries = (entries) => {
+		this.setState(Object.assign(this.state.user, {entries: entries}));
 	}
 
 	/*
@@ -251,9 +164,7 @@ class App extends React.Component {
 				<div>
 					<Particles className="fixed" options={particlesOptions}/>
 					<Navigation route={this.state.route} onRouteChange={this.onRouteChange}/>
-					<Rank name={this.state.user.name} entries={this.state.user.entries}/>
-					<ImageLinkForm onInputChange={this.onInputChange} onEnterPress={this.onEnterPress} onDetectClick={this.onDetectClick}/>
-					<FaceRecognition imageUrl={this.state.imageUrl} onImageLoad={this.onImageLoad} box={this.state.box}/>
+					<Home user={this.state.user} updateEntries={this.updateEntries}/>
 				</div>
 			);
 		}
