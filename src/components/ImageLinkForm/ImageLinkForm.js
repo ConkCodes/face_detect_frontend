@@ -3,11 +3,6 @@ import "./ImageLinkForm.css";
 
 class ImageLinkForm extends React.Component {
 
-    /*
-    description: sets focus to first input on page load.
-    input: n/a
-    output: n/a
-    */
     componentDidMount() {
         document.getElementById("detectInput").focus();
     }

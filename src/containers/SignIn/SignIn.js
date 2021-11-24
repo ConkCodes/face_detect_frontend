@@ -10,60 +10,29 @@ class SignIn extends React.Component {
             password: ""
         }
     }
-
-    /*
-    description: sets focus to first input on page load.
-    input: n/a
-    output: n/a
-    */
+    
     componentDidMount() {
         document.getElementById("emailInput").focus();
     }
 
-    /*
-	description: listens to the onChange event and sets the input value to email state.
-	input: onChange event
-	output: n/a
-	*/
     onEmailChange = (event) => {
         this.setState({email: event.target.value});
     }
 
-	/*
-	description: listens to the onChange event and sets the input value to password state.
-	input: onChange event
-	output: n/a
-	*/
     onPasswordChange = (event) => {
         this.setState({password: event.target.value});
     }
 
-    /*
-	description: listens to the onKeyPress event and calls signIn() when the enter key is pressed.
-	input: onKeyPress event
-	output: n/a
-	*/
     onEnterPress = (event) => {
         if (event.key === "Enter") this.signIn();
     }
 
-    /*
-	description: listens to the onClick event and calls the sign in function when the sign in button is clicked.
-	input: 
-	output: n/a
-	*/
     onSignInClick = () => {
         this.signIn();
     }
 
-    /*
-	description: attempts to sign in user, set user state in app.js, and send user to the home page.
-	input: n/a
-	output: n/a
-	*/
     signIn = async () => {
         try {
-            // attempt to sign in user
             const res = await fetch("http://localhost:3000/user/signIn", {
                 method: "POST",
                 headers: {"Content-Type": "application/json"},
@@ -73,16 +42,11 @@ class SignIn extends React.Component {
                 })
             })
             const user = await res.json();
-            // success -> set user state & switch to home page
-            if (user.id)  {
-                this.props.loadUser(user);
-                this.props.onRouteChange("home");
-            // fail -> throw error
-            } else throw new Error(user);
-        // error
+            if (res.status !== 200) throw new Error(user);
+            this.props.loadUser(user);
+            this.props.onRouteChange("home");
         } catch (err) {
-            // log error
-            console.log(err);
+            alert(err);
         }
     }
 

@@ -6,7 +6,6 @@ import SignIn from "../SignIn/SignIn.js";
 import SignUp from "../SignUp/SignUp.js";
 import Home from "../Home/Home.js";
 
-// customize particles.js
 const particlesOptions = {
 	background: {
 		color: {
@@ -85,7 +84,6 @@ const particlesOptions = {
 	detectRetina: true,
 }
 
-// saves intial state as a content for when state needs to be reset
 const initialState = {
 	route: "signIn",
 	user: {}
@@ -98,30 +96,15 @@ class App extends React.Component {
 		this.state = initialState;
 	}
 
-	/*
-	description: updates route state and resets state if user logs out.
-	input: route name
-	output: n/a
-	*/
 	onRouteChange = (route) => {
 		if (route !== "signOut") this.setState({route: route});
 		else this.setState(initialState);
 	}
 
-	/*
-	description: 
-	input: 
-	output: 
-	*/
 	updateEntries = (entries) => {
 		this.setState(Object.assign(this.state.user, {entries: entries}));
 	}
 
-	/*
-	description: called by functions in signIn.js and signUp.js and loads user information.
-	input: user
-	output: n/a
-	*/
 	loadUser = (user) => {
 		this.setState({
 			user: {
@@ -134,13 +117,7 @@ class App extends React.Component {
 		});
 	}
 
-	/* 
-	description: displays different pages based on the route state
-	input: n/a
-	output: n/a
-	*/
 	render() {
-		// display sign in page
 		if (this.state.route === "signIn") {
 			return(
 				<div>
@@ -149,7 +126,6 @@ class App extends React.Component {
 					<SignIn loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
 				</div>
 			);
-		// display sign up page
 		} else if (this.state.route === "signUp") {
 			return(
 				<div>
@@ -158,7 +134,6 @@ class App extends React.Component {
 					<SignUp loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
 				</div>
 			);
-		// display home page
 		} else if (this.state.route === "home") {
 			return (
 				<div>
