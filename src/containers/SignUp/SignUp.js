@@ -43,8 +43,10 @@ class SignUp extends React.Component {
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify({name: this.state.name, email: this.state.email, password: this.state.password})
             });
-            if (res.status !== 201) throw new Error(await res.json());
-            this.props.loadUser(await res.json());
+            const status = res.status();
+            const user = await res.json();
+            if (status !== 201) throw new Error(user);
+            this.props.loadUser(user);
             this.props.onRouteChange("home");
         } catch (err) {
             alert(err);

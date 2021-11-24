@@ -40,9 +40,10 @@ class SignIn extends React.Component {
                     email: this.state.email,
                     password: this.state.password
                 })
-            })
+            });
+            const status = res.status;
             const user = await res.json();
-            if (res.status !== 200) throw new Error(user);
+            if (status !== 200) throw new Error(user);
             this.props.loadUser(user);
             this.props.onRouteChange("home");
         } catch (err) {

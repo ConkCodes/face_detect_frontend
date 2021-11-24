@@ -29,30 +29,24 @@ class Home extends React.Component {
 		this.faceDetect();
 	}
 
-	getFaceBox = async () => {
-		try {
-
-		} catch (err) {
-
-		}
-	}
-
 	faceDetect = async () => {
 		try {
-			let res = await fetch("http://localhost:3000/user/clarifai", {
+			const clarifaiRes = await fetch("http://localhost:3000/user/clarifai", {
 				method: "POST",
 				headers: {"Content-Type": "application/json"},
 				body: JSON.stringify({input: this.state.input})
 			});
-			const data = await res.json();
-			if (res.status !== 200) throw new Error(data);
-			res = await fetch("http://localhost:3000/user/entries", {
+			const clarifaiStatus = clarifaiRes.status;
+			const data = await clarifaiRes.json();
+			if (clarifaiStatus !== 200) throw new Error(data);
+			const entriesRes = await fetch("http://localhost:3000/user/entries", {
 				method: "PUT",
 				headers: {"Content-Type": "application/json"},
 				body: JSON.stringify({id: this.props.user.id})
 			});
+			const entriesStatus = entriesRes.status;
 			const entries = await res.json();
-			if (res.status !== 201) throw new Error(entries);
+			if (entriesStatus !== 201) throw new Error(entries);
 			this.props.updateEntries(entries);
 			this.setState({
 				imageUrl: this.state.input,
