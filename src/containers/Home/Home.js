@@ -45,7 +45,7 @@ class Home extends React.Component {
 				body: JSON.stringify({id: this.props.user.id})
 			});
 			const entriesStatus = entriesRes.status;
-			const entries = await res.json();
+			const entries = await entriesRes.json();
 			if (entriesStatus !== 201) throw new Error(entries);
 			this.props.updateEntries(entries);
 			this.setState({

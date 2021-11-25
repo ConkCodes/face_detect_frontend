@@ -5,6 +5,7 @@ import Navigation from "../../components/Navigation/Navigation.js";
 import SignIn from "../SignIn/SignIn.js";
 import SignUp from "../SignUp/SignUp.js";
 import Home from "../Home/Home.js";
+import Profile from "../Profile/Profile.js";
 
 const particlesOptions = {
 	background: {
@@ -142,6 +143,14 @@ class App extends React.Component {
 					<Home user={this.state.user} updateEntries={this.updateEntries}/>
 				</div>
 			);
+		} else if (this.state.route === "profile") {
+			return (
+				<div>
+					<Particles className="fixed" options={particlesOptions}/>
+					<Navigation route={this.state.route} onRouteChange={this.onRouteChange}/>
+					<Profile user={this.state.user}/>
+				</div>
+			);	
 		}
 	}
 }
