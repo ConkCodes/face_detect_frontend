@@ -8,10 +8,6 @@
     margin: auto;
 }
 
-.bs-border {
-    box-sizing: border-box;
-}
-
 .bs-inherit {
     box-sizing: inherit;
 }
@@ -42,34 +38,12 @@
     margin-top: 0;
 }
 
-.w-max {
-    width: 100%;
-}
-
 .fs-150 {
     font-size: 1.5rem;
 }
 
 .b {
     font-weight: bold;
-}
-
-.input {
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    border-width: 1px;
-    border-style: solid;
-    border-color: black;
-    background-color: white;
-}
-
-.input:hover, 
-.input:focus {
-    background-color: black;
-    border-color: white;
-    color: white;
 }
 
 .button {

@@ -4,7 +4,7 @@ import brain from "./brain.png";
 
 const Navigation = (props) => {
     if (props.route === "signIn") {
-        return(
+        return (
             <div className="flex">
                 <Tilt className="flex jc-center ai-center h-80 w-80 mtrb-16 ml-32 card">
                     <img className="h-80p w-80p" alt="brain" src={brain}/>
@@ -15,7 +15,7 @@ const Navigation = (props) => {
             </div>
         );
     } else if (props.route === "signUp") {
-        return(
+        return (
             <div className="flex">
                 <Tilt className="flex jc-center ai-center h-80 w-80 mtrb-16 ml-32 card">
                     <img className="h-80p w-80p" alt="brain" src={brain}/>
@@ -26,7 +26,7 @@ const Navigation = (props) => {
             </div>
         );
     } else if (props.route === "home") {
-        return(
+        return (
             <div className="flex">
                 <Tilt className="flex jc-center ai-center h-80 w-80 mtrb-16 ml-32 card">
                     <img className="h-80p w-80p" alt="brain" src={brain}/>
@@ -38,7 +38,7 @@ const Navigation = (props) => {
             </div>
         );
     } else if (props.route === "profile") {
-        return(
+        return (
             <div className="flex">
                 <Tilt className="flex jc-center ai-center h-80 w-80 mtrb-16 ml-32 card">
                     <img className="h-80p w-80p" alt="brain" src={brain}/>

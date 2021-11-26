@@ -1,5 +1,6 @@
 import React from "react";
 import "./SignUp.css";
+import Input from "../../components/Input/Input.js";
 
 class SignUp extends React.Component {
 
@@ -10,10 +11,6 @@ class SignUp extends React.Component {
             email: "",
             password: ""
         }
-    }
-
-    componentDidMount() {
-        document.getElementById("nameInput").focus();
     }
 
     onNameChange = (event) => {
@@ -54,15 +51,15 @@ class SignUp extends React.Component {
     }
 
     render() {
-        return(
+        return (
             <div className="card w-400 plr-80 ptb-48 m-auto">
                 <p className="mt-0 fs-150 b">Sign Up</p>
                 <p className="mb-0">Name</p>
-                <input id="nameInput" onKeyPress={this.onEnterPress} onChange={this.onNameChange} type="text" className="input w-max bs-border"/>
+                <Input id="nameInput" onKeyPress={this.onEnterPress} onChange={this.onNameChange} type="text" className="w-max"/>
                 <p className="mb-0">Email</p>
-                <input onKeyPress={this.onEnterPress} onChange={this.onEmailChange} type="text" className="input w-max bs-border"/>
+                <Input onKeyPress={this.onEnterPress} onChange={this.onEmailChange} type="text" className="w-max"/>
                 <p className="mb-0">Password</p>
-                <input onKeyPress={this.onEnterPress} onChange={this.onPasswordChange} type="password" className="input w-max bs-border"/>
+                <Input onKeyPress={this.onEnterPress} onChange={this.onPasswordChange} type="password" className="w-max"/>
                 <button onClick={this.onSignUpClick} className="button mt-16">Sign Up</button>
             </div>
         );

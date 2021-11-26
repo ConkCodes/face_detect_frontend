@@ -3,11 +3,11 @@ import "./FaceRecognition.css";
 const FaceRecognition = (props) => {
 
     if (props.imageUrl === "") {
-        return(
+        return (
             <div></div>
         ); 
     } else {
-        return(
+        return (
             <div className="flex jc-center">
                 <div className="abs">
                     <img onLoad={props.onImageLoad} id="inputImage" className="w-512 h-auto b-black shadow" alt="" src={props.imageUrl}/>
