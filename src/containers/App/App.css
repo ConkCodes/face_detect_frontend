@@ -6,3 +6,15 @@
     left: 0;
     z-index: -1;
 }
+
+.flex {
+    display: flex;
+}
+
+.column {
+    flex-direction: column;
+}
+
+.f-grow {
+    flex-grow: 1;
+}

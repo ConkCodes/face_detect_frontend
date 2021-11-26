@@ -2,6 +2,10 @@
     text-align: center;
 }
 
+.m-auto {
+    margin: auto;
+}
+
 .flex {
     display: flex;
 }

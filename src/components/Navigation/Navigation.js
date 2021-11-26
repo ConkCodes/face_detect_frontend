@@ -31,7 +31,7 @@ const Navigation = (props) => {
                 <Tilt className="flex jc-center ai-center h-80 w-80 mtrb-16 ml-32 card">
                     <img className="h-80p w-80p" alt="brain" src={brain}/>
                 </Tilt>
-                <nav className="ml-auto">
+                <nav className="ml-auto flex">
                     <p onClick={() => props.onRouteChange("profile")} className="pr-32 link c-white fs-125">Profile</p>
                     <p onClick={() => props.onRouteChange("signOut")} className="pr-32 link c-white fs-125">Sign Out</p>
                 </nav>
@@ -43,7 +43,7 @@ const Navigation = (props) => {
                 <Tilt className="flex jc-center ai-center h-80 w-80 mtrb-16 ml-32 card">
                     <img className="h-80p w-80p" alt="brain" src={brain}/>
                 </Tilt>
-                <nav className="ml-auto">
+                <nav className="ml-auto flex">
                     <p onClick={() => props.onRouteChange("home")} className="pr-32 link c-white fs-125">Home</p>
                     <p onClick={() => props.onRouteChange("signOut")} className="pr-32 link c-white fs-125">Sign Out</p>
                 </nav>

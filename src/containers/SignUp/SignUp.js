@@ -55,7 +55,7 @@ class SignUp extends React.Component {
 
     render() {
         return(
-            <div className="card w-400 plr-80 ptb-48 m-auto mt-32">
+            <div className="card w-400 plr-80 ptb-48 m-auto">
                 <p className="mt-0 fs-150 b">Sign Up</p>
                 <p className="mb-0">Name</p>
                 <input id="nameInput" onKeyPress={this.onEnterPress} onChange={this.onNameChange} type="text" className="input w-max bs-border"/>

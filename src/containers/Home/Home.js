@@ -75,7 +75,7 @@ class Home extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="m-auto">
                 <Rank user={this.props.user}/>
                 <ImageLinkForm onInputChange={this.onInputChange} onEnterPress={this.onEnterPress} onDetectClick={this.onDetectClick}/>
                 <FaceRecognition imageUrl={this.state.imageUrl} onImageLoad={this.onImageLoad} box={this.state.box}/>

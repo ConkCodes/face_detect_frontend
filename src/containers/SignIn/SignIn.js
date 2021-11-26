@@ -53,7 +53,7 @@ class SignIn extends React.Component {
 
     render() {
         return(
-            <div className="card w-400 plr-80 ptb-48 m-auto mt-32">
+            <div className="card w-400 plr-80 ptb-48 m-auto">
                 <p className="mt-0 fs-150 b">Sign In</p>
                 <p className="mb-0">Email</p>
                 <input id="emailInput" onKeyPress={this.onEnterPress} onChange={this.onEmailChange} type="text" className="input w-max bs-border"/>

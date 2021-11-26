@@ -6,6 +6,7 @@ import SignIn from "../SignIn/SignIn.js";
 import SignUp from "../SignUp/SignUp.js";
 import Home from "../Home/Home.js";
 import Profile from "../Profile/Profile.js";
+import Footer from "../../components/Footer/Footer.js";
 
 const particlesOptions = {
 	background: {
@@ -121,34 +122,38 @@ class App extends React.Component {
 	render() {
 		if (this.state.route === "signIn") {
 			return(
-				<div>
+				<div className="flex column">
 					<Particles className="fixed" options={particlesOptions}/>
 					<Navigation route={this.state.route} onRouteChange={this.onRouteChange}/>
-					<SignIn loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
+					<SignIn className="f-grow" loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
+					<Footer/>
 				</div>
 			);
 		} else if (this.state.route === "signUp") {
 			return(
-				<div>
+				<div className="flex column">
 					<Particles className="fixed" options={particlesOptions}/>
 					<Navigation route={this.state.route} onRouteChange={this.onRouteChange}/>
-					<SignUp loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
+					<SignUp className="f-grow" loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
+					<Footer/>
 				</div>
 			);
 		} else if (this.state.route === "home") {
 			return (
-				<div>
+				<div className="flex column">
 					<Particles className="fixed" options={particlesOptions}/>
 					<Navigation route={this.state.route} onRouteChange={this.onRouteChange}/>
-					<Home user={this.state.user} updateEntries={this.updateEntries}/>
+					<Home className="f-grow" user={this.state.user} updateEntries={this.updateEntries}/>
+					<Footer/>
 				</div>
 			);
 		} else if (this.state.route === "profile") {
 			return (
-				<div>
+				<div className="flex column">
 					<Particles className="fixed" options={particlesOptions}/>
 					<Navigation route={this.state.route} onRouteChange={this.onRouteChange}/>
-					<Profile user={this.state.user}/>
+					<Profile className="f-grow" user={this.state.user}/>
+					<Footer/>
 				</div>
 			);	
 		}
