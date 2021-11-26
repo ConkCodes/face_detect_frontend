@@ -1,23 +1,22 @@
-import React from "react";
+
 import "./ImageLinkForm.css";
+import Input from "../../components/Input/Input.js";
 
-class ImageLinkForm extends React.Component {
+const ImageLinkForm = (props) => {
 
-    componentDidMount() {
-        document.getElementById("detectInput").focus();
-    }
 
-    render() {
-        return(
-            <div className="flex fd-column ai-center">
-                <p className="mb-0 c-gradient b fs-150">Enter an Image Link for the Magic Brain to Detect Human Faces</p>
-                <div className="w-512 flex p-16 m-16 card">
-                    <input id="detectInput" onKeyPress={this.props.onEnterPress} onChange={this.props.onInputChange} type="text" className="w-70p input"/>
-                    <button onClick={this.props.onDetectClick} className="w-30p button">Detect</button>
-                </div>
+    return(
+        <div className="flex fd-column ai-center">
+            <p className="mb-0 c-gradient b fs-150">Enter an Image Link for the Magic Brain to Detect Human Faces</p>
+            <div className="w-512 flex p-16 m-16 card">
+                <Input className="w-70p" onKeyPress={props.onEnterPress} onChange={props.onInputChange} type={"text"}/>
+                
+                <div className="idk"></div>
+                <button onClick={props.onDetectClick} className="w-28p button">Detect</button>
             </div>
-        );
-    }
+        </div>
+    );
+
 
 }
 

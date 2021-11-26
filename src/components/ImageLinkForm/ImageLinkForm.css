@@ -23,11 +23,16 @@
 }
 
 .w-70p {
-    width: 70%
+    width: 69%;
 }
 
-.w-30p {
+.idk {
+    width: 1%;
+}
+
+.w-28p {
     width: 30%;
+    margin-left: auto;
 }
 
 .p-16 {
