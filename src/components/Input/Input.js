@@ -4,12 +4,7 @@ import "./Input.css";
 class Input extends React.Component {
 
     componentDidMount() {
-        const emailInput = document.getElementById("emailInput");
-        if (emailInput !== null) emailInput.focus();
-        const nameInput = document.getElementById("nameInput");
-        if (nameInput !== null) nameInput.focus();
-        const urlInput = document.getElementById("urlInput");
-        if (urlInput !== null) urlInput.focus();
+        if (this.props.id !== undefined) document.getElementById(this.props.id).focus();
     }
 
     render() {

@@ -1,6 +1,8 @@
 import React from "react";
 import "./SignUp.css";
+import Form from "../../components/Form/Form.js";
 import Input from "../../components/Input/Input.js";
+import Button from "../../components/Button/Button.js";
 
 class SignUp extends React.Component {
 
@@ -52,16 +54,16 @@ class SignUp extends React.Component {
 
     render() {
         return (
-            <div className="card w-400 plr-80 ptb-48 m-auto">
-                <p className="mt-0 fs-150 b">Sign Up</p>
+            <Form className="w-400">
+                <h1 className="mt-0">Sign Up</h1>
                 <p className="mb-0">Name</p>
                 <Input id="nameInput" onKeyPress={this.onEnterPress} onChange={this.onNameChange} type="text" className="w-max"/>
                 <p className="mb-0">Email</p>
                 <Input onKeyPress={this.onEnterPress} onChange={this.onEmailChange} type="text" className="w-max"/>
                 <p className="mb-0">Password</p>
                 <Input onKeyPress={this.onEnterPress} onChange={this.onPasswordChange} type="password" className="w-max"/>
-                <button onClick={this.onSignUpClick} className="button mt-16">Sign Up</button>
-            </div>
+                <Button onClick={this.onSignUpClick} text="Sign Up" className="mt-16"/>
+            </Form>
         );
     }
 

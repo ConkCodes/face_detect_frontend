@@ -1,13 +1,12 @@
 import "./Form.css";
 
-const Form = () => {
+const Form = (props) => {
 
     return (
-        <div>
-            
+        <div className={"form " + props.className}>
+            {props.children}
         </div>
     );
-
 
 }
 

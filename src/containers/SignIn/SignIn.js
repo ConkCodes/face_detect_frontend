@@ -1,6 +1,8 @@
 import React from "react";
 import "./SignIn.css";
+import Form from "../../components/Form/Form.js";
 import Input from "../../components/Input/Input.js";
+import Button from "../../components/Button/Button.js";
 
 class SignIn extends React.Component {
 
@@ -50,15 +52,15 @@ class SignIn extends React.Component {
 
     render() {
         return (
-            <div className="card w-400 plr-80 ptb-48 m-auto">
-                <p className="mt-0 fs-150 b">Sign In</p>
+            <Form className="w-400">
+                <h1 className="mt-0">Sign In</h1>
                 <p className="mb-0">Email</p>
                 <Input id="emailInput" onKeyPress={this.onEnterPress} onChange={this.onEmailChange} type="text" className="w-max"/>
                 <p className="mb-0">Password</p>
                 <Input onKeyPress={this.onEnterPress} onChange={this.onPasswordChange} type="password" className="w-max"/>
-                <button onClick={this.onSignInClick} className="button mt-16">Sign In</button>
+                <Button onClick={this.onSignInClick} text="Sign In" className="mt-16"/>
                 <p className="mb-0">Don't have an account? <span onClick={() => this.props.onRouteChange("signUp")}className="link">Sign up</span></p>
-            </div>
+            </Form>
         );
     }
 
