@@ -125,7 +125,7 @@ class App extends React.Component {
 				<div className="flex column">
 					<Particles className="fixed" options={particlesOptions}/>
 					<Navigation route={this.state.route} onRouteChange={this.onRouteChange}/>
-					<SignIn className="f-grow" loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
+					<SignIn loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
 					<Footer/>
 				</div>
 			);
@@ -134,7 +134,7 @@ class App extends React.Component {
 				<div className="flex column">
 					<Particles className="fixed" options={particlesOptions}/>
 					<Navigation route={this.state.route} onRouteChange={this.onRouteChange}/>
-					<SignUp className="f-grow" loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
+					<SignUp loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
 					<Footer/>
 				</div>
 			);
@@ -143,7 +143,7 @@ class App extends React.Component {
 				<div className="flex column">
 					<Particles className="fixed" options={particlesOptions}/>
 					<Navigation route={this.state.route} onRouteChange={this.onRouteChange}/>
-					<Home className="f-grow" user={this.state.user} updateEntries={this.updateEntries}/>
+					<Home user={this.state.user} updateEntries={this.updateEntries}/>
 					<Footer/>
 				</div>
 			);
@@ -152,7 +152,7 @@ class App extends React.Component {
 				<div className="flex column">
 					<Particles className="fixed" options={particlesOptions}/>
 					<Navigation route={this.state.route} onRouteChange={this.onRouteChange}/>
-					<Profile className="f-grow" user={this.state.user}/>
+					<Profile user={this.state.user}/>
 					<Footer/>
 				</div>
 			);	

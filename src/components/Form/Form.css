@@ -5,18 +5,14 @@
     margin: auto;
 }
 
-.p-48-80 {
+.form1 {
     padding: 3rem 5rem;
-}
-
-.p-16 {
-    padding: 1rem;
-}
-
-.m-16 {
-    margin: 1rem;
-}
-
-.w-400 {
     width: 25rem;
+}
+
+.form2 {
+    display: flex;
+    padding: 1rem;
+    margin: 1rem;
+    width: 32rem;
 }

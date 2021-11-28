@@ -54,7 +54,7 @@ class SignUp extends React.Component {
 
     render() {
         return (
-            <Form className="w-400 p-48-80">
+            <Form className="form1">
                 <h1 className="mt-0">Sign Up</h1>
                 <p className="mb-0">Name</p>
                 <Input id="nameInput" onKeyPress={this.onEnterPress} onChange={this.onNameChange} type="text" className="w-max"/>

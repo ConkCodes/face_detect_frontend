@@ -2,20 +2,14 @@ import "./FaceRecognition.css";
 
 const FaceRecognition = (props) => {
 
-    if (props.imageUrl === "") {
-        return (
-            <div></div>
-        ); 
-    } else {
-        return (
-            <div className="flex jc-center">
-                <div className="abs">
-                    <img onLoad={props.onImageLoad} id="inputImage" className="w-512 h-auto b-black shadow" alt="" src={props.imageUrl}/>
-                    <div className="bounding-box" style={{top: props.box.top, right: props.box.right, bottom: props.box.bottom, left: props.box.left}}></div>
-                </div>
+    return (
+        <div style={{width: props.width, height: props.height}} className="m-auto">
+            <div className="abs">
+                <img onLoad={props.onImageLoad} id="inputImage" className="image" alt="" src={props.imageUrl}/>
+                <div className="bounding-box" style={{top: props.box.top, right: props.box.right, bottom: props.box.bottom, left: props.box.left}}></div>
             </div>
-        );
-    }
+        </div>
+    );
 
 }
 

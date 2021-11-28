@@ -14,7 +14,3 @@
 .column {
     flex-direction: column;
 }
-
-.f-grow {
-    flex-grow: 1;
-}
