@@ -1,17 +1,18 @@
 import "./ImageLinkForm.css";
-import Form from "../../components/Form/Form.js";
-import Input from "../../components/Input/Input.js";
-import Button from "../../components/Button/Button.js";
+import Text from "../Text/Text.js";
+import Form from "../Form/Form.js";
+import Input from "../Input/Input.js";
+import Button from "../Button/Button.js";
 
 const ImageLinkForm = (props) => {
 
     return (
         <div>
-            <p className="mb-16 c-gradient b fs-150">Enter an Image Link for the Magic Brain to Detect Human Faces</p>
+            <Text text="Enter an Image Link for the Magic Brain to Detect Human Faces" className="text1"/>
             <Form className="form2">
-                <Input id="urlInput" className="w-70p bs-border" onKeyPress={props.onEnterPress} onChange={props.onInputChange} type={"text"}/>
-                <div className="idk"></div>
-                <Button onClick={props.onDetectClick} text="Detect" className="w-28p"/>
+                <Input id="urlInput" onKeyPress={props.onEnterPress} onChange={props.onInputChange} type={"text"} className="input2"/>
+                <div className="space"></div>
+                <Button onClick={props.onDetectClick} text="Detect" className="button2"/>
             </Form>
         </div>
     );

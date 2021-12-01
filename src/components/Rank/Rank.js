@@ -1,11 +1,12 @@
 import "./Rank.css";
+import Text from "../Text/Text.js";
 
 const Rank = (props) => {
 
     return (
         <div className="ta-center">
-            <p className="c-gradient b fs-150 mt-32 mb-0">{props.user.name}, Your Current Entry Count Is...</p>
-            <p className="c-gradient b fs-200 mt-0 mb-0">{props.user.entries}</p>
+            <Text text={props.user.name + ", Your Current Entry Count Is..."} className="text2"/>
+            <Text text={props.user.entries} className="text3"/>
         </div>
     );
 

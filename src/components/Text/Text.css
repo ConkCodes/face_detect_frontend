@@ -1,0 +1,25 @@
+.text {
+    background: linear-gradient(89deg, #FF5EDF 0%, #04C8DE 100%);
+    background-clip: text;
+    color: transparent;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.text1 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.text2 {
+    font-size: 1.5rem;
+    margin-top: 2rem;
+    margin-bottom: 0;
+
+}
+
+.text3 {
+    font-size: 2rem;
+    margin-top: 0;
+    margin-bottom: 0;
+}

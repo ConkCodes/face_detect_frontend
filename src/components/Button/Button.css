@@ -4,9 +4,7 @@
     padding-left: 1rem;
     padding-right: 1rem;
     font-weight: bold;
-    border-width: 1px;
-    border-style: solid;
-    border-color: black;
+    border: 1px solid black;
     border-radius: 3px;
     background-color: #CBC3E3;
     transition: all .2s ease-in-out;
@@ -17,10 +15,10 @@ button:hover {
     cursor: pointer;
 }
 
-.mt-16 {
+.button1 {
     margin-top: 1rem;
 }
 
-.w-28p {
-    width: 30%;
+.button2 {
+    width: 24%;
 }

@@ -1,33 +1,3 @@
 .ta-center {
     text-align: center;
 }
-
-.c-gradient {
-    background: linear-gradient(89deg, #FF5EDF 0%, #04C8DE 100%);
-    background-clip: text;
-    color: transparent;
-}
-
-.fs-200 {
-    font-size: 2rem;
-}
-
-.fs-150 {
-    font-size: 1.5rem;
-}
-
-.mt-32 {
-    margin-top: 2rem;
-}
-
-.mb-0 {
-    margin-bottom: 0;
-}
-
-.mt-0 {
-    margin-top: 0;
-}
-
-.b {
-    font-weight: bold;
-}

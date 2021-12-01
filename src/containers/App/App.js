@@ -2,7 +2,6 @@ import React from "react";
 import './App.css';
 import Particles from "react-tsparticles";
 import Header from "../../components/Header/Header.js";
-import Navigation from "../../components/Navigation/Navigation.js";
 import SignIn from "../SignIn/SignIn.js";
 import SignUp from "../SignUp/SignUp.js";
 import Home from "../Home/Home.js";
@@ -124,7 +123,7 @@ class App extends React.Component {
 		if (this.state.route === "signIn") {
 			return(
 				<div className="flex column">
-					<Particles className="fixed" options={particlesOptions}/>
+					<Particles className="paticles" options={particlesOptions}/>
 					<Header route={this.state.route} onRouteChange={this.onRouteChange}/>
 					<SignIn loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
 					<Footer/>
@@ -133,7 +132,7 @@ class App extends React.Component {
 		} else if (this.state.route === "signUp") {
 			return(
 				<div className="flex column">
-					<Particles className="fixed" options={particlesOptions}/>
+					<Particles className="paticles" options={particlesOptions}/>
 					<Header route={this.state.route} onRouteChange={this.onRouteChange}/>
 					<SignUp loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
 					<Footer/>
@@ -142,7 +141,7 @@ class App extends React.Component {
 		} else if (this.state.route === "home") {
 			return (
 				<div className="flex column">
-					<Particles className="fixed" options={particlesOptions}/>
+					<Particles className="paticles" options={particlesOptions}/>
 					<Header route={this.state.route} onRouteChange={this.onRouteChange}/>
 					<Home user={this.state.user} updateEntries={this.updateEntries}/>
 					<Footer/>
@@ -151,7 +150,7 @@ class App extends React.Component {
 		} else if (this.state.route === "profile") {
 			return (
 				<div className="flex column">
-					<Particles className="fixed" options={particlesOptions}/>
+					<Particles className="paticles" options={particlesOptions}/>
 					<Header route={this.state.route} onRouteChange={this.onRouteChange}/>
 					<Profile user={this.state.user}/>
 					<Footer/>

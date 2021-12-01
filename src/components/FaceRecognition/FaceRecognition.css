@@ -1,8 +1,11 @@
-.m-auto {
-    margin: auto;
+.imageContainer {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    margin-right: auto;
+    margin-left: auto;
 }
 
-.abs {
+.imageDiv {
     position: absolute;
 }
 
