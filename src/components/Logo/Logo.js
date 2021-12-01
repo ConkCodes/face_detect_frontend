@@ -5,7 +5,7 @@ import brain from "./brain.png";
 const Logo = () => {
 
     return (
-        <Tilt className="logo card">
+        <Tilt className="logo">
             <img className="h-80p w-80p" alt="brain" src={brain}/>
         </Tilt>
     );

@@ -1,6 +1,7 @@
 import React from "react";
 import './App.css';
 import Particles from "react-tsparticles";
+import Header from "../../components/Header/Header.js";
 import Navigation from "../../components/Navigation/Navigation.js";
 import SignIn from "../SignIn/SignIn.js";
 import SignUp from "../SignUp/SignUp.js";
@@ -124,7 +125,7 @@ class App extends React.Component {
 			return(
 				<div className="flex column">
 					<Particles className="fixed" options={particlesOptions}/>
-					<Navigation route={this.state.route} onRouteChange={this.onRouteChange}/>
+					<Header route={this.state.route} onRouteChange={this.onRouteChange}/>
 					<SignIn loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
 					<Footer/>
 				</div>
@@ -133,7 +134,7 @@ class App extends React.Component {
 			return(
 				<div className="flex column">
 					<Particles className="fixed" options={particlesOptions}/>
-					<Navigation route={this.state.route} onRouteChange={this.onRouteChange}/>
+					<Header route={this.state.route} onRouteChange={this.onRouteChange}/>
 					<SignUp loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
 					<Footer/>
 				</div>
@@ -142,7 +143,7 @@ class App extends React.Component {
 			return (
 				<div className="flex column">
 					<Particles className="fixed" options={particlesOptions}/>
-					<Navigation route={this.state.route} onRouteChange={this.onRouteChange}/>
+					<Header route={this.state.route} onRouteChange={this.onRouteChange}/>
 					<Home user={this.state.user} updateEntries={this.updateEntries}/>
 					<Footer/>
 				</div>
@@ -151,7 +152,7 @@ class App extends React.Component {
 			return (
 				<div className="flex column">
 					<Particles className="fixed" options={particlesOptions}/>
-					<Navigation route={this.state.route} onRouteChange={this.onRouteChange}/>
+					<Header route={this.state.route} onRouteChange={this.onRouteChange}/>
 					<Profile user={this.state.user}/>
 					<Footer/>
 				</div>

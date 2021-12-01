@@ -1,33 +1,4 @@
-.flex {
+.nav {
     display: flex;
-}
-
-.pr-32 {
-    padding-right: 2rem;
-}
-
-.m-auto {
-    margin: auto;
-}
-
-.link {
-    text-decoration: underline;
-}
-
-.link:hover {
-    cursor: pointer;
-    opacity: .5;
-    transition: opacity .15s ease-in;
-}
-
-.ml-auto {
     margin-left: auto;
-}
-
-.c-white {
-    color: white;
-}
-
-.fs-125 {
-    font-size: 1.25rem;
 }

@@ -1,45 +1,33 @@
 import "./Navigation.css";
-import Logo from "../Logo/Logo.js";
+import Link from "../Link/Link.js";
 
 const Navigation = (props) => {
 
     if (props.route === "signIn") {
         return (
-            <div className="flex">
-                <Logo/>
-                <nav className="ml-auto flex">
-                    <p onClick={() => props.onRouteChange("signUp")} className="pr-32 m-auto link c-white fs-125">Sign Up</p>
-                </nav>
-            </div>
+            <nav className="nav">
+                <Link onClick={() => props.onRouteChange("signUp")} className="" text="Sign Up"/>
+            </nav>
         );
     } else if (props.route === "signUp") {
         return (
-            <div className="flex">
-                <Logo/>
-                <nav className="ml-auto flex">
-                    <p onClick={() => props.onRouteChange("signIn")} className="pr-32 m-auto link c-white fs-125">Sign In</p>
-                </nav>
-            </div>
+            <nav className="nav">
+                <Link onClick={() => props.onRouteChange("signIn")} className="" text="Sign In"/>
+            </nav>
         );
     } else if (props.route === "home") {
         return (
-            <div className="flex">
-                <Logo/>
-                <nav className="ml-auto flex">
-                    <p onClick={() => props.onRouteChange("profile")} className="pr-32 m-auto link c-white fs-125">Profile</p>
-                    <p onClick={() => props.onRouteChange("signOut")} className="pr-32 m-auto link c-white fs-125">Sign Out</p>
-                </nav>
-            </div>
+            <nav className="nav">
+                <Link onClick={() => props.onRouteChange("profile")} className="" text="Profile"/>
+                <Link onClick={() => props.onRouteChange("signOut")} className="" text="Sign Out"/>
+            </nav>
         );
     } else if (props.route === "profile") {
         return (
-            <div className="flex">
-                <Logo/>
-                <nav className="ml-auto flex">
-                    <p onClick={() => props.onRouteChange("home")} className="pr-32 m-auto link c-white fs-125">Home</p>
-                    <p onClick={() => props.onRouteChange("signOut")} className="pr-32 m-auto link c-white fs-125">Sign Out</p>
-                </nav>
-            </div>
+            <nav className="nav">
+                <Link onClick={() => props.onRouteChange("home")} className="" text="Home"/>
+                <Link onClick={() => props.onRouteChange("signOut")} className="" text="Sign Out"/>
+            </nav>
         );
     }
 
