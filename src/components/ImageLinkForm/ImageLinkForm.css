@@ -2,28 +2,22 @@
     text-align: center;
 }
 
+.imageLinkForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .m-auto {
     margin: auto;
-}
-
-.flex {
-    display: flex;
-}
-
-.fd-column {
-    flex-direction: column;
-}
-
-.ai-center {
-    align-items: center;
 }
 
 .idk {
     width: 1%;
 }
 
-.mb-0 {
-    margin-bottom: 0;
+.mb-16 {
+    margin-bottom: 1rem;
 }
 
 .c-gradient {

@@ -2,20 +2,12 @@
     display: flex;
 }
 
-.jc-center {
-    justify-content: center;
-}
-
-.ai-center {
-    align-items: center;
-}
-
-.jc-end {
-    justify-content: flex-end;
-}
-
 .pr-32 {
     padding-right: 2rem;
+}
+
+.m-auto {
+    margin: auto;
 }
 
 .link {
@@ -30,36 +22,6 @@
 
 .ml-auto {
     margin-left: auto;
-}
-
-.h-80p {
-    height: 80%;
-}
-
-.w-80p {
-    width: 80%;
-}
-
-.h-80 {
-    height: 5rem;
-}
-
-.w-80 {
-    width: 5rem;
-}
-
-.mtrb-16 {
-    margin: 1rem;
-}
-
-.ml-32 {
-    margin-left: 2rem;
-}
-
-.card {
-    background: linear-gradient(89deg, #FF5EDF 0%, #04C8DE 100%);
-    border: 1px solid black;
-    box-shadow: 0px 0px 8px 2px rgba( 0, 0, 0, 0.2);
 }
 
 .c-white {
