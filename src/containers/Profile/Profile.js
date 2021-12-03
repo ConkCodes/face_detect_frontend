@@ -16,45 +16,60 @@ class Profile extends React.Component {
     }
 
     onProfileRouteChange = (route) => {
-
+        this.setState({profileRoute: route});
     }
 
     render() {
 
-        return (
-            <Form className="form3">
-                <div>
-                    <p>profile pic</p>
-                    <p>name</p>
-                    <Link onClick={() => this.onProfileRouteChange("profile")} className="" text="Profile"/>
-                    <Link onClick={() => this.onProfileRouteChange("entries")} className="" text="Entries"/>
-                </div>
-                <div>
-                    <div className="flex">
+        if (this.state.profileRoute === "profile") {
+            return (
+                <Form className="form3">
+                    <div>
+                        <img src="https://i.pinimg.com/originals/d5/92/9f/d5929f157635c606095d49f53fe9776e.png" alt="profile pic" className="profilePic"/>
+                        <p>profile pic</p>
                         <p>name</p>
-                        <p>{this.props.user.name}</p>
-                        <Input/>
+                        <Link onClick={() => this.onProfileRouteChange("profile")} className="" text="Profile"/>
+                        <Link onClick={() => this.onProfileRouteChange("entries")} className="" text="Entries"/>
                     </div>
-                    <div className="flex">
-                        <p>email</p>
-                        <p>{this.props.user.email}</p>
-                        <Input/>
-                    </div>
-                    <div className="flex">
-                        <p>password</p>
-                        <p>*****</p>
-                        <Input/>
-                    </div>
-                    {// use readonly input attribute
+                    {// how to make all the inputs go to the end equally? use css grid to make another column OR find out how to stretch inputs to remining % maybe 100% works?
                     }
-                    <div className="flex">
-                        <p>joined</p>
-                        <p>this.props.user.joined</p>
-                        <Input/>
+                    <div className="editProfile">
+                        <div className="flex">
+                            <p>Name</p>
+                            <Input placeHolder={this.props.user.name} readOnly={false}/>
+                        </div>
+                        <div className="flex">
+                            <p>Email</p>
+                            <Input placeHolder={this.props.user.email} readOnly={false}/>
+                        </div>
+                        <div className="flex">
+                            <p>Password</p>
+                            <Input placeHolder={"**********"} readOnly={false}/>
+                        </div>
+                        {// use readonly input attribute
+                        }
+                        <div className="flex">
+                            <p>Joined</p>
+                            <Input placeHolder={this.props.user.joined} readOnly={true}/>
+                        </div>
                     </div>
-                </div>
-            </Form>
-        );
+                </Form>
+            );
+        } else if (this.state.profileRoute === "entries") {
+            // grab entries as an array and map them into something and display them like on
+            return (
+                <Form className="form3">
+                    <div>
+                        <p>profile pic</p>
+                        <p>name</p>
+                        <Link onClick={() => this.onProfileRouteChange("profile")} className="" text="Profile"/>
+                        <Link onClick={() => this.onProfileRouteChange("entries")} className="" text="Entries"/>
+                    </div>
+                    <p>entries here</p>
+                </Form>
+            );
+        }
+
 
     }
 

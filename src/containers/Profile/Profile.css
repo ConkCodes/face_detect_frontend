@@ -1,3 +1,17 @@
 .profile {
     margin: auto;
 }
+
+.profilePic {
+    width: 200px;
+    height: auto;
+    border-radius: 3px;
+}
+
+.editProfile {
+    margin: auto;
+}
+
+.flex {
+    display: flex;
+}

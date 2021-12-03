@@ -8,9 +8,16 @@ class Input extends React.Component {
     }
 
     render() {
-        return (
-            <input id={this.props.id} type={this.props.type} className={"input " + this.props.className} onKeyPress={this.props.onKeyPress} onChange={this.props.onChange}/>
-        ); 
+        if (this.props.readOnly === true) {
+            return (
+                <input id={this.props.id} type={this.props.type} placeholder={this.props.placeHolder} className={"input " + this.props.className} onKeyPress={this.props.onKeyPress} onChange={this.props.onChange} readOnly/>
+            ); 
+        } else if (this.props.readOnly === false) {
+            return (
+                <input id={this.props.id} type={this.props.type} placeholder={this.props.placeHolder} className={"input " + this.props.className} onKeyPress={this.props.onKeyPress} onChange={this.props.onChange}/>
+            ); 
+        }
+
     }
 
 }

@@ -55,9 +55,9 @@ class SignIn extends React.Component {
             <Form className="form1">
                 <h1 className="mt-0">Sign In</h1>
                 <p className="mb-0">Email</p>
-                <Input id="emailInput" onKeyPress={this.onEnterPress} onChange={this.onEmailChange} type="text" className="input1"/>
+                <Input id="emailInput" onKeyPress={this.onEnterPress} onChange={this.onEmailChange} type="text" readOnly={false} className="input1"/>
                 <p className="mb-0">Password</p>
-                <Input onKeyPress={this.onEnterPress} onChange={this.onPasswordChange} type="password" className="input1"/>
+                <Input onKeyPress={this.onEnterPress} onChange={this.onPasswordChange} type="password" readOnly={false} className="input1"/>
                 <Button onClick={this.onSignInClick} text="Sign In" className="button1"/>
                 <p className="mb-0">Don't have an account? <span onClick={() => this.props.onRouteChange("signUp")}className="link">Sign up</span></p>
             </Form>

@@ -57,11 +57,11 @@ class SignUp extends React.Component {
             <Form className="form1">
                 <h1 className="mt-0">Sign Up</h1>
                 <p className="mb-0">Name</p>
-                <Input id="nameInput" onKeyPress={this.onEnterPress} onChange={this.onNameChange} type="text" className="input1"/>
+                <Input id="nameInput" onKeyPress={this.onEnterPress} onChange={this.onNameChange} type="text" readOnly={false} className="input1"/>
                 <p className="mb-0">Email</p>
-                <Input onKeyPress={this.onEnterPress} onChange={this.onEmailChange} type="text" className="input1"/>
+                <Input onKeyPress={this.onEnterPress} onChange={this.onEmailChange} type="text" readOnly={false} className="input1"/>
                 <p className="mb-0">Password</p>
-                <Input onKeyPress={this.onEnterPress} onChange={this.onPasswordChange} type="password" className="input1"/>
+                <Input onKeyPress={this.onEnterPress} onChange={this.onPasswordChange} type="password" readOnly={false} className="input1"/>
                 <Button onClick={this.onSignUpClick} text="Sign Up" className="button1"/>
             </Form>
         );
