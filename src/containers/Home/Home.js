@@ -1,4 +1,5 @@
 import React from "react";
+import "./Home.css";
 import Rank from "../../components/Rank/Rank.js";
 import ImageLinkForm from "../../components/ImageLinkForm/ImageLinkForm.js"
 import FaceRecognition from "../../components/FaceRecognition/FaceRecognition.js";
@@ -80,14 +81,14 @@ class Home extends React.Component {
     render() {
 		if (this.state.imageUrl === "") {
 			return (
-				<div className="m-auto">
+				<div className="home">
 					<Rank user={this.props.user}/>
 					<ImageLinkForm onInputChange={this.onInputChange} onEnterPress={this.onEnterPress} onDetectClick={this.onDetectClick}/>
 				</div>
 			);	
 		}
 		return (
-			<div className="m-auto">
+			<div className="home">
 				<Rank user={this.props.user}/>
 				<ImageLinkForm onInputChange={this.onInputChange} onEnterPress={this.onEnterPress} onDetectClick={this.onDetectClick}/>
 				<FaceRecognition width={this.state.width} height={this.state.height} imageUrl={this.state.imageUrl} onImageLoad={this.onImageLoad} box={this.state.box}/>

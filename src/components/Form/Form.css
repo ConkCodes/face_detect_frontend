@@ -16,3 +16,10 @@
     padding: 1rem;
     width: 32rem;
 }
+
+.form3 {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    padding: 3rem 5rem;
+    width: 50rem;
+}
