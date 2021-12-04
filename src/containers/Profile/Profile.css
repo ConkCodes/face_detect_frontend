@@ -5,11 +5,23 @@
 .profilePic {
     width: 200px;
     height: auto;
+    border: 1px solid black;
     border-radius: 3px;
 }
 
 .editProfile {
     margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+}
+
+.editProfileLabel {
+    margin-right: 1rem;
+}
+
+.editProfileInput {
+    margin-top: auto;
+    margin-bottom: auto;
 }
 
 .flex {

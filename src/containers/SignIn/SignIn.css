@@ -13,13 +13,3 @@
 .b {
     font-weight: bold;
 }
-
-.link {
-    text-decoration: underline;
-}
-
-.link:hover {
-    cursor: pointer;
-    opacity: .5;
-    transition: opacity .15s ease-in;
-}

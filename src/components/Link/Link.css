@@ -1,4 +1,4 @@
-.link {
+.link1 {
     padding-right: 2rem;
     margin: auto;
     text-decoration: underline;
@@ -6,8 +6,26 @@
     font-size: 1.25rem;
 }
 
-.link:hover {
+.link1:hover {
     cursor: pointer;
     opacity: .5;
     transition: opacity .15s ease-in;
+}
+
+.link2 {
+    text-decoration: underline;
+}
+
+.link2:hover {
+    cursor: pointer;
+    opacity: .5;
+    transition: opacity .15s ease-in;
+}
+
+.link3 {
+    
+}
+
+.link3:hover {
+    cursor: pointer;
 }

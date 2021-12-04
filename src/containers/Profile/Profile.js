@@ -26,31 +26,36 @@ class Profile extends React.Component {
                 <Form className="form3">
                     <div>
                         <img src="https://i.pinimg.com/originals/d5/92/9f/d5929f157635c606095d49f53fe9776e.png" alt="profile pic" className="profilePic"/>
-                        <p>profile pic</p>
-                        <p>name</p>
-                        <Link onClick={() => this.onProfileRouteChange("profile")} className="" text="Profile"/>
-                        <Link onClick={() => this.onProfileRouteChange("entries")} className="" text="Entries"/>
+                        <p>{this.props.user.name}</p>
+                        <Link onClick={() => this.onProfileRouteChange("profile")} className="link3" text="Profile"/>
+                        <Link onClick={() => this.onProfileRouteChange("entries")} className="link3" text="Entries"/>
                     </div>
                     {// how to make all the inputs go to the end equally? use css grid to make another column OR find out how to stretch inputs to remining % maybe 100% works?
                     }
                     <div className="editProfile">
-                        <div className="flex">
+                        <div className="editProfileLabel">
                             <p>Name</p>
-                            <Input placeHolder={this.props.user.name} readOnly={false}/>
                         </div>
-                        <div className="flex">
+                        <div className="editProfileInput">
+                            <Input placeHolder={this.props.user.name} className="input1" readOnly={false}/>
+                        </div>
+                        <div className="editProfileLabel">
                             <p>Email</p>
-                            <Input placeHolder={this.props.user.email} readOnly={false}/>
                         </div>
-                        <div className="flex">
+                        <div className="editProfileInput">
+                            <Input placeHolder={this.props.user.email} className="input1" readOnly={false}/>
+                        </div>
+                        <div className="editProfileLabel">
                             <p>Password</p>
-                            <Input placeHolder={"**********"} readOnly={false}/>
                         </div>
-                        {// use readonly input attribute
-                        }
-                        <div className="flex">
+                        <div className="editProfileInput">
+                            <Input placeHolder={"**********"} className="input1" readOnly={false}/>
+                        </div>
+                        <div className="editProfileLabel">
                             <p>Joined</p>
-                            <Input placeHolder={this.props.user.joined} readOnly={true}/>
+                        </div>
+                        <div className="editProfileInput">
+                            <Input placeHolder={this.props.user.joined} className="input1" readOnly={true}/>
                         </div>
                     </div>
                 </Form>
