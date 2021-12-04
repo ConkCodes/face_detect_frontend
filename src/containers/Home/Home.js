@@ -49,7 +49,7 @@ class Home extends React.Component {
 			});
 			const entriesStatus = entriesRes.status;
 			const entries = await entriesRes.json();
-			if (entriesStatus !== 201) throw new Error(entries);
+			if (entriesStatus !== 200) throw new Error(entries);
 			this.props.updateEntries(entries);
 			this.setState({
 				imageUrl: this.state.input,
