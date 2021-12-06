@@ -3,6 +3,7 @@ import "./Profile.css";
 import Form from "../../components/Form/Form.js";
 import Link from "../../components/Link/Link.js";
 import Input from "../../components/Input/Input.js";
+import Button from "../../components/Button/Button.js";
 
 const initialState = {
 	profileRoute: "account",
@@ -20,6 +21,12 @@ class Profile extends React.Component {
 
     onProfileRouteChange = (route) => {
         this.setState({profileRoute: route});
+    }
+
+    onSaveClick = () => {
+        if (this.state.name !== "") this.updateName();
+        if (this.state.email !== "") this.updateEmail();
+        if (this.state.password !== "") this.updatePassword();
     }
 
     onEnterPress = (event) => {
@@ -118,29 +125,32 @@ class Profile extends React.Component {
                         <Link onClick={() => this.onProfileRouteChange("entries")} className="link4" text="Entries"/>
                     </div>
                     <div className="editProfile">
-                        <div className="editProfileLabel">
+                        <div className="accountLabel">
                             <p>Name</p>
                         </div>
-                        <div className="editProfileInput">
+                        <div className="accountInput">
                             <Input id="editNameInput" onKeyPress={this.onEnterPress} onChange={this.onNameChange} placeHolder={this.props.user.name} className="input1" readOnly={false}/>
                         </div>
-                        <div className="editProfileLabel">
+                        <div className="accountLabel">
                             <p>Email</p>
                         </div>
-                        <div className="editProfileInput">
+                        <div className="accountInput">
                             <Input id="editEmailInput" onKeyPress={this.onEnterPress} onChange={this.onEmailChange} placeHolder={this.props.user.email} className="input1" readOnly={false}/>
                         </div>
-                        <div className="editProfileLabel">
+                        <div className="accountLabel">
                             <p>Password</p>
                         </div>
-                        <div className="editProfileInput">
+                        <div className="accountInput">
                             <Input id="editPasswordInput" onKeyPress={this.onEnterPress} onChange={this.onPasswordChange} placeHolder={"**********"} type="password" className="input1" readOnly={false}/>
                         </div>
-                        <div className="editProfileLabel">
+                        <div className="accountLabel">
                             <p>Joined</p>
                         </div>
-                        <div className="editProfileInput">
+                        <div className="accountInput">
                             <Input placeHolder={this.props.user.joined} className="input1" readOnly={true}/>
+                        </div>
+                        <div className="accountButton">
+                            <Button onClick={this.onSaveClick} text="Save Changes" className=""/>
                         </div>
                     </div>
                 </Form>
