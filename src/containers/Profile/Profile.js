@@ -101,12 +101,13 @@ class Profile extends React.Component {
             if (status !== 200) throw new Error(password);
         } catch (err) {
             alert(err);
-            this.setState(initialState);
+        } finally {
+            this.setState({password: ""});
+            document.getElementById("editPasswordInput").value = "";
         }
     }
 
     render() {
-        console.log(this.state.name, this.state.email);
         if (this.state.profileRoute === "account") {
             return (
                 <Form className="form3">
@@ -133,7 +134,7 @@ class Profile extends React.Component {
                             <p>Password</p>
                         </div>
                         <div className="editProfileInput">
-                            <Input placeHolder={"**********"} className="input1" readOnly={false}/>
+                            <Input id="editPasswordInput" onKeyPress={this.onEnterPress} onChange={this.onPasswordChange} placeHolder={"**********"} type="password" className="input1" readOnly={false}/>
                         </div>
                         <div className="editProfileLabel">
                             <p>Joined</p>
