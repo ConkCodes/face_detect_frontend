@@ -103,7 +103,15 @@ class App extends React.Component {
 		else this.setState(initialState);
 	}
 
-	updateEntries = (entries) => {
+	updateName = (name) => {
+		this.setState(Object.assign(this.state.user, {name: name}));
+	}
+
+	updateEmail = (email) => {
+		this.setState(Object.assign(this.state.user, {email: email}));
+	}
+
+	updateUser = (entries) => {
 		this.setState(Object.assign(this.state.user, {entries: entries}));
 	}
 
@@ -152,7 +160,7 @@ class App extends React.Component {
 				<div className="flex column">
 					<Particles className="paticles" options={particlesOptions}/>
 					<Header route={this.state.route} onRouteChange={this.onRouteChange}/>
-					<Profile user={this.state.user}/>
+					<Profile user={this.state.user} updateName={this.updateName} updateEmail={this.updateEmail}/>
 					<Footer/>
 				</div>
 			);	
