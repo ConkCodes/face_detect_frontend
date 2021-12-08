@@ -10,7 +10,7 @@ const ImageLinkForm = (props) => {
         <div>
             <Text text="Enter an Image Link for the Magic Brain to Detect Human Faces" className="text1"/>
             <Form className="form2">
-                <Input id="urlInput" onKeyPress={props.onEnterPress} onChange={props.onInputChange} type={"text"} readOnly={false} className="input2"/>
+                <Input id="urlInput" onKeyPress={props.onEnterPress} onChange={props.onInputChange} type={"text"} className="input2"/>
                 <div className="space"></div>
                 <Button onClick={props.onDetectClick} text="Detect" className="button2"/>
             </Form>

@@ -3,15 +3,18 @@ import "./SignIn.css";
 import Form from "../../components/Form/Form.js";
 import Input from "../../components/Input/Input.js";
 import Button from "../../components/Button/Button.js";
+import Link from "../../components/Link/Link.js";
+
+const initialState = {
+    email: "",
+    password: ""
+}
 
 class SignIn extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = {
-            email: "",
-            password: ""
-        }
+        this.state = initialState
     }
 
     onEmailChange = (event) => {
@@ -47,6 +50,9 @@ class SignIn extends React.Component {
             this.props.onRouteChange("home");
         } catch (err) {
             alert(err);
+            this.setState(initialState);
+            document.getElementById("emailInput").value = "";
+            document.getElementById("passwordInput").value = "";
         }
     }
 
@@ -55,11 +61,11 @@ class SignIn extends React.Component {
             <Form className="form1">
                 <h1 className="mt-0">Sign In</h1>
                 <p className="mb-0">Email</p>
-                <Input id="emailInput" onKeyPress={this.onEnterPress} onChange={this.onEmailChange} type="text" readOnly={false} className="input1"/>
+                <Input id="emailInput" onKeyPress={this.onEnterPress} onChange={this.onEmailChange} type="text" className="input1 focus"/>
                 <p className="mb-0">Password</p>
-                <Input onKeyPress={this.onEnterPress} onChange={this.onPasswordChange} type="password" readOnly={false} className="input1"/>
+                <Input id="passwordInput" onKeyPress={this.onEnterPress} onChange={this.onPasswordChange} type="password" className="input1"/>
                 <Button onClick={this.onSignInClick} text="Sign In" className="button1"/>
-                <p className="mb-0">Don't have an account? <span onClick={() => this.props.onRouteChange("signUp")}className="link5">Sign Up</span></p>
+                <p className="mb-0">Don't have an account? <Link span={true} onClick={() => this.props.onRouteChange("signUp")} text="Sign Up" className="link5"/></p>
             </Form>
         );
     }

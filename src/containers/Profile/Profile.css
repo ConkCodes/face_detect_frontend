@@ -1,7 +1,3 @@
-.profile {
-    margin: auto;
-}
-
 .profilePic {
     width: 200px;
     height: auto;
@@ -13,27 +9,9 @@
     margin-top: 0;
 }
 
-.editProfile {
+.account {
     margin: auto;
     display: grid;
     grid-template-columns: 1fr 5fr;
-}
-
-.accountLabel {
-    margin-right: 1rem;
-}
-
-.accountInput {
-    margin-top: auto;
-    margin-bottom: auto;
-}
-
-.accountButton {
-    grid-column-start: 1;
-    grid-column-end: span 2;
-    margin-top: 1rem;
-}
-
-.flex {
-    display: flex;
+    gap: 0.5rem 1rem;;
 }

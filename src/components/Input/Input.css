@@ -20,3 +20,9 @@
 .input2 {
     width: 75%;
 }
+
+.input3 {
+    width: 100%;
+    margin-top: auto;
+    margin-bottom: auto;
+}

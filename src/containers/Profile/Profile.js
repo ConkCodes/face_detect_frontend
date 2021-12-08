@@ -124,34 +124,16 @@ class Profile extends React.Component {
                         <Link onClick={() => this.onProfileRouteChange("profile")} className="link3" text="Account"/>
                         <Link onClick={() => this.onProfileRouteChange("entries")} className="link4" text="Entries"/>
                     </div>
-                    <div className="editProfile">
-                        <div className="accountLabel">
-                            <p>Name</p>
-                        </div>
-                        <div className="accountInput">
-                            <Input id="editNameInput" onKeyPress={this.onEnterPress} onChange={this.onNameChange} placeHolder={this.props.user.name} className="input1" readOnly={false}/>
-                        </div>
-                        <div className="accountLabel">
-                            <p>Email</p>
-                        </div>
-                        <div className="accountInput">
-                            <Input id="editEmailInput" onKeyPress={this.onEnterPress} onChange={this.onEmailChange} placeHolder={this.props.user.email} className="input1" readOnly={false}/>
-                        </div>
-                        <div className="accountLabel">
-                            <p>Password</p>
-                        </div>
-                        <div className="accountInput">
-                            <Input id="editPasswordInput" onKeyPress={this.onEnterPress} onChange={this.onPasswordChange} placeHolder={"**********"} type="password" className="input1" readOnly={false}/>
-                        </div>
-                        <div className="accountLabel">
-                            <p>Joined</p>
-                        </div>
-                        <div className="accountInput">
-                            <Input placeHolder={this.props.user.joined} className="input1" readOnly={true}/>
-                        </div>
-                        <div className="accountButton">
-                            <Button onClick={this.onSaveClick} text="Save Changes" className=""/>
-                        </div>
+                    <div className="account">
+                        <p>Name</p>
+                        <Input id="editNameInput" onKeyPress={this.onEnterPress} onChange={this.onNameChange} placeHolder={this.props.user.name} className="input3 focus"/>
+                        <p>Email</p>
+                        <Input id="editEmailInput" onKeyPress={this.onEnterPress} onChange={this.onEmailChange} placeHolder={this.props.user.email} className="input3"/>
+                        <p>Password</p>
+                        <Input id="editPasswordInput" onKeyPress={this.onEnterPress} onChange={this.onPasswordChange} placeHolder={"**********"} type="password" className="input3"/>
+                        <p>Joined</p>
+                        <Input placeHolder={this.props.user.joined} className="input3" readOnly={true}/>
+                        <Button onClick={this.onSaveClick} text="Save Changes" className="button3"/>
                     </div>
                 </Form>
             );

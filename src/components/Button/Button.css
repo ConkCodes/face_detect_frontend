@@ -22,3 +22,9 @@ button:hover {
 .button2 {
     width: 24%;
 }
+
+.button3 {
+    grid-column-start: 1;
+    grid-column-end: span 2;
+    margin-right: auto;
+}
