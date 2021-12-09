@@ -128,44 +128,24 @@ class App extends React.Component {
 	}
 
 	render() {
-		if (this.state.route === "signIn") {
-			return(
-				<div className="flex column">
-					<Particles className="paticles" options={particlesOptions}/>
-					<Header route={this.state.route} onRouteChange={this.onRouteChange}/>
-					<SignIn loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
-					<Footer/>
-				</div>
-			);
-		} else if (this.state.route === "signUp") {
-			return(
-				<div className="flex column">
-					<Particles className="paticles" options={particlesOptions}/>
-					<Header route={this.state.route} onRouteChange={this.onRouteChange}/>
-					<SignUp loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
-					<Footer/>
-				</div>
-			);
-		} else if (this.state.route === "home") {
-			return (
-				<div className="flex column">
-					<Particles className="paticles" options={particlesOptions}/>
-					<Header route={this.state.route} onRouteChange={this.onRouteChange}/>
-					<Home user={this.state.user} updateEntries={this.updateEntries}/>
-					<Footer/>
-				</div>
-			);
-		} else if (this.state.route === "profile") {
-			return (
-				<div className="flex column">
-					<Particles className="paticles" options={particlesOptions}/>
-					<Header route={this.state.route} onRouteChange={this.onRouteChange}/>
-					<Profile user={this.state.user} updateName={this.updateName} updateEmail={this.updateEmail}/>
-					<Footer/>
-				</div>
-			);	
-		}
+
+		let content;
+		if (this.state.route === "signIn") content = <SignIn loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
+		else if (this.state.route === "signUp") content = <SignUp loadUser={this.loadUser} onRouteChange={this.onRouteChange}/>
+		else if (this.state.route === "home") content = <Home user={this.state.user} updateEntries={this.updateEntries}/>
+		else if (this.state.route === "profile") content = <Profile user={this.state.user} updateName={this.updateName} updateEmail={this.updateEmail}/>
+
+		return(
+			<div className="flex column">
+				<Particles className="paticles" options={particlesOptions}/>
+				<Header route={this.state.route} onRouteChange={this.onRouteChange}/>
+				{content}
+				<Footer/>
+			</div>
+		);
+
 	}
+	
 }
 
 export default App;

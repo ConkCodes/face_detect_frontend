@@ -114,22 +114,18 @@ class Profile extends React.Component {
     }
 
     render() {
-        if (this.state.profileRoute === "account") {
-            return (
-                <Form className="profileForm">
-                    <ProfileNav user={this.props.user} profileRoute={this.state.profileRoute} onProfileRouteChange={this.onProfileRouteChange}/>
-                    <Account onEnterPress={this.onEnterPress} user={this.props.user} onNameChange={this.onNameChange} onEmailChange={this.onEmailChange} onPasswordChange={this.onPasswordChange} onSaveClick={this.onSaveClick}/>
-                </Form>
-            );
-        } else if (this.state.profileRoute === "entries") {
-            // grab entries as an array and map them into something and display them like on
-            return (
-                <Form className="profileForm">
-                    <ProfileNav user={this.props.user} profileRoute={this.state.profileRoute} onProfileRouteChange={this.onProfileRouteChange}/>
-                    <p>entries here</p>
-                </Form>
-            );
-        }
+
+        let content;
+        if (this.state.profileRoute === "account") content = <Account onEnterPress={this.onEnterPress} user={this.props.user} onNameChange={this.onNameChange} onEmailChange={this.onEmailChange} onPasswordChange={this.onPasswordChange} onSaveClick={this.onSaveClick}/>
+        // grab entries as an array and map them into something and display them like on
+        else if (this.state.profileRoute === "entries") content = <p>entries here</p>
+
+        return (
+            <Form className="profileForm">
+                <ProfileNav user={this.props.user} profileRoute={this.state.profileRoute} onProfileRouteChange={this.onProfileRouteChange}/>
+                {content}
+            </Form>
+        );
 
     }
 
