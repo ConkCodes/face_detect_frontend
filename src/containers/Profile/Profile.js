@@ -1,9 +1,8 @@
 import React from "react";
 import "./Profile.css";
 import Form from "../../components/Form/Form.js";
-import Link from "../../components/Link/Link.js";
-import Input from "../../components/Input/Input.js";
-import Button from "../../components/Button/Button.js";
+import ProfileNav from "../../components/ProfileNav/ProfileNav.js";
+import Account from "../../components/Account/Account.js";
 
 const initialState = {
 	profileRoute: "account",
@@ -117,41 +116,20 @@ class Profile extends React.Component {
     render() {
         if (this.state.profileRoute === "account") {
             return (
-                <Form className="form3">
-                    <div>
-                        <img src="https://i.pinimg.com/originals/d5/92/9f/d5929f157635c606095d49f53fe9776e.png" alt="profile pic" className="profilePic"/>
-                        <p>{this.props.user.name}</p>
-                        <Link onClick={() => this.onProfileRouteChange("profile")} className="link3" text="Account"/>
-                        <Link onClick={() => this.onProfileRouteChange("entries")} className="link4" text="Entries"/>
-                    </div>
-                    <div className="account">
-                        <p>Name</p>
-                        <Input id="editNameInput" onKeyPress={this.onEnterPress} onChange={this.onNameChange} placeHolder={this.props.user.name} className="input3 focus"/>
-                        <p>Email</p>
-                        <Input id="editEmailInput" onKeyPress={this.onEnterPress} onChange={this.onEmailChange} placeHolder={this.props.user.email} className="input3"/>
-                        <p>Password</p>
-                        <Input id="editPasswordInput" onKeyPress={this.onEnterPress} onChange={this.onPasswordChange} placeHolder={"**********"} type="password" className="input3"/>
-                        <p>Joined</p>
-                        <Input placeHolder={this.props.user.joined} className="input3" readOnly={true}/>
-                        <Button onClick={this.onSaveClick} text="Save Changes" className="button3"/>
-                    </div>
+                <Form className="profileForm">
+                    <ProfileNav user={this.props.user} profileRoute={this.state.profileRoute} onProfileRouteChange={this.onProfileRouteChange}/>
+                    <Account onEnterPress={this.onEnterPress} user={this.props.user} onNameChange={this.onNameChange} onEmailChange={this.onEmailChange} onPasswordChange={this.onPasswordChange} onSaveClick={this.onSaveClick}/>
                 </Form>
             );
         } else if (this.state.profileRoute === "entries") {
             // grab entries as an array and map them into something and display them like on
             return (
-                <Form className="form3">
-                    <div>
-                        <img src="https://i.pinimg.com/originals/d5/92/9f/d5929f157635c606095d49f53fe9776e.png" alt="profile pic" className="profilePic"/>
-                        <p>{this.props.user.name}</p>
-                        <Link onClick={() => this.onProfileRouteChange("account")} className="link4" text="Account"/>
-                        <Link onClick={() => this.onProfileRouteChange("entries")} className="link3" text="Entries"/>
-                    </div>
+                <Form className="profileForm">
+                    <ProfileNav user={this.props.user} profileRoute={this.state.profileRoute} onProfileRouteChange={this.onProfileRouteChange}/>
                     <p>entries here</p>
                 </Form>
             );
         }
-
 
     }
 

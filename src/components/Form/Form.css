@@ -6,18 +6,18 @@
     margin: auto;
 }
 
-.form1 {
+.signForm {
     padding: 3rem 5rem;
     width: 25rem;
 }
 
-.form2 {
+.imageForm {
     display: flex;
     padding: 1rem;
     width: 32rem;
 }
 
-.form3 {
+.profileForm {
     display: grid;
     grid-template-columns: 1fr 2fr;
     padding: 3rem 5rem;

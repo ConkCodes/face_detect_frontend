@@ -60,15 +60,15 @@ class SignUp extends React.Component {
 
     render() {
         return (
-            <Form className="form1">
+            <Form className="signForm">
                 <h1 className="mt-0">Sign Up</h1>
                 <p className="mb-0">Name</p>
-                <Input id="nameInput" onKeyPress={this.onEnterPress} onChange={this.onNameChange} type="text" className="input1 focus"/>
+                <Input id="nameInput" onKeyPress={this.onEnterPress} onChange={this.onNameChange} type="text" className="signInput focus"/>
                 <p className="mb-0">Email</p>
-                <Input id="emailInput" onKeyPress={this.onEnterPress} onChange={this.onEmailChange} type="text" className="input1"/>
+                <Input id="emailInput" onKeyPress={this.onEnterPress} onChange={this.onEmailChange} type="text" className="signInput"/>
                 <p className="mb-0">Password</p>
-                <Input id="passwordInput" onKeyPress={this.onEnterPress} onChange={this.onPasswordChange} type="password" className="input1"/>
-                <Button onClick={this.onSignUpClick} text="Sign Up" className="button1"/>
+                <Input id="passwordInput" onKeyPress={this.onEnterPress} onChange={this.onPasswordChange} type="password" className="signInput"/>
+                <Button onClick={this.onSignUpClick} text="Sign Up" className="signButton"/>
             </Form>
         );
     }

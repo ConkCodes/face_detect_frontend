@@ -8,7 +8,7 @@ const Link = (props) => {
         );
     } else {
         return (
-            <span onClick={props.onclick} className={"link " + props.className}>{props.text}</span>
+            <span onClick={props.onClick} className={"link " + props.className}>{props.text}</span>
         );
     }
 

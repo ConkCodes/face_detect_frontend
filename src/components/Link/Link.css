@@ -2,7 +2,7 @@
     cursor: pointer;
 }
 
-.link1 {
+.navLink1 {
     padding-right: 2rem;
     font-weight: bold;
     margin: auto;
@@ -10,7 +10,7 @@
     font-size: 1.25rem;
 }
 
-.link2 {
+.navLink2 {
     padding-right: 2rem;
     font-weight: bold;
     margin: auto;
@@ -19,35 +19,34 @@
     font-size: 1.25rem;
 }
 
-.link2:hover {
+.navLink2:hover {
     opacity: 1;
     transition: opacity .15s ease-in;
 }
 
-.link3 {
+.profileLink1 {
     margin: 0.5rem;
     font-weight: bold;
     font-size: 1.25rem;
 }
 
-.link4 {
+.profileLink2 {
     margin: 0.5rem;
     font-weight: bold;
     font-size: 1.25rem;
     opacity: 0.5;
 }
 
-.link4:hover {
+.profileLink2:hover {
     opacity: 1;
     transition: opacity .15s ease-in;
 }
 
-.link5 {
+.spankLink {
     text-decoration: underline;
-    font-weight: bold;
 }
 
-.link5:hover {
+.spanLink:hover {
     opacity: 0.5;
     transition: opacity .15s ease-in;
 }

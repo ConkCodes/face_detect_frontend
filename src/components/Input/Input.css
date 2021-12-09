@@ -13,15 +13,15 @@
     color: white;
 }
 
-.input1 {
+.signInput {
     width: 100%;
 }
 
-.input2 {
+.imageInput {
     width: 75%;
 }
 
-.input3 {
+.accountInput {
     width: 100%;
     margin-top: auto;
     margin-bottom: auto;

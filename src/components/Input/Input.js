@@ -18,7 +18,6 @@ class Input extends React.Component {
                 <input id={this.props.id} type={this.props.type} placeholder={this.props.placeHolder} className={"input " + this.props.className} onKeyPress={this.props.onKeyPress} onChange={this.props.onChange} readOnly/>
             ); 
         }
-
     }
 
 }

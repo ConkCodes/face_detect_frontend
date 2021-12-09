@@ -58,14 +58,14 @@ class SignIn extends React.Component {
 
     render() {
         return (
-            <Form className="form1">
+            <Form className="signForm">
                 <h1 className="mt-0">Sign In</h1>
                 <p className="mb-0">Email</p>
-                <Input id="emailInput" onKeyPress={this.onEnterPress} onChange={this.onEmailChange} type="text" className="input1 focus"/>
+                <Input id="emailInput" onKeyPress={this.onEnterPress} onChange={this.onEmailChange} type="text" className="signInput focus"/>
                 <p className="mb-0">Password</p>
-                <Input id="passwordInput" onKeyPress={this.onEnterPress} onChange={this.onPasswordChange} type="password" className="input1"/>
-                <Button onClick={this.onSignInClick} text="Sign In" className="button1"/>
-                <p className="mb-0">Don't have an account? <Link span={true} onClick={() => this.props.onRouteChange("signUp")} text="Sign Up" className="link5"/></p>
+                <Input id="passwordInput" onKeyPress={this.onEnterPress} onChange={this.onPasswordChange} type="password" className="signInput"/>
+                <Button onClick={this.onSignInClick} text="Sign In" className="signButton"/>
+                <p className="mb-0">Don't have an account? <Link span={true} onClick={() => this.props.onRouteChange("signUp")} text="Sign Up" className="spanLink"/></p>
             </Form>
         );
     }

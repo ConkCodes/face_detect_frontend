@@ -1,0 +1,10 @@
+.profilePic {
+    width: 200px;
+    height: auto;
+    border: 1px solid black;
+    border-radius: 3px;
+}
+
+.profilePic+p {
+    margin-top: 0;
+}

@@ -15,15 +15,15 @@ button:hover {
     cursor: pointer;
 }
 
-.button1 {
+.signButton {
     margin-top: 1rem;
 }
 
-.button2 {
+.detectButton {
     width: 24%;
 }
 
-.button3 {
+.accountButton {
     grid-column-start: 1;
     grid-column-end: span 2;
     margin-right: auto;
